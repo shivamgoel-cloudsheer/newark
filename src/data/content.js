@@ -343,10 +343,10 @@ export const variants = [
   },
   {
     id: 'aegis',
-    name: 'Concept B — Meridian',
-    vibe: 'Consultancy Trust',
-    desc: 'Cream and deep navy with serif display type. Compliance calendar in the hero, license in the header, FAQ and process timeline. Built to win property-manager RFPs.',
-    swatches: ['#0c2340', '#b3202c', '#faf8f4', '#8c6b2f'],
+    name: 'Concept B — Inferno',
+    vibe: 'Cinematic Fire',
+    desc: 'Near-black with crimson heat. Massive poster typography, full-bleed photography, a scrolling fire ticker and a pulsing 24/7 emergency wall. The one people remember.',
+    swatches: ['#0e0b0b', '#e5062d', '#fff7f0', '#ff6b1a'],
   },
   {
     id: 'pulse',

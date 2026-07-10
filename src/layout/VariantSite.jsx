@@ -72,8 +72,8 @@ function Header() {
         isActive ? 'border-[#c8102e] text-[#14161a]' : 'border-transparent text-[#5b5f68] hover:text-[#14161a]'
       }`
     if (variantId === 'aegis')
-      return `text-sm font-semibold px-1 transition-colors ${
-        isActive ? 'text-[#b3202c]' : 'text-[#1d2a3a]/75 hover:text-[#0c2340]'
+      return `text-[13px] font-bold uppercase tracking-[0.08em] px-1 transition-colors ${
+        isActive ? 'text-[#ff3b4f]' : 'text-white/70 hover:text-white'
       }`
     return `text-sm font-medium px-3 py-1.5 rounded-full transition-all ${
       isActive ? 'bg-[#ff5c1a]/15 text-[#ff9f1c]' : 'text-[#8b96a5] hover:text-white hover:bg-white/5'
@@ -87,7 +87,7 @@ function Header() {
           variantId === 'ember'
             ? 'inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c8102e] text-white'
             : variantId === 'aegis'
-              ? 'inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#0c2340] text-white'
+              ? 'inline-flex items-center justify-center w-10 h-10 rounded-md bg-gradient-to-br from-[#e5062d] to-[#ff6b1a] text-white'
               : 'inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#ff5c1a] to-[#ff9f1c] text-[#0a0c10]'
         }
       >
@@ -99,13 +99,13 @@ function Header() {
             variantId === 'ember'
               ? 'font-archivo text-[#14161a]'
               : variantId === 'aegis'
-                ? 'font-fraunces text-lg text-[#0c2340]'
+                ? 'font-anton uppercase tracking-[0.04em] text-[#fff7f0]'
                 : 'font-grotesk text-white'
           }`}
         >
           Newark Fire Sprinkler
         </span>
-        <span className={`block text-[10.5px] tracking-wide ${variantId === 'pulse' ? 'text-[#8b96a5]' : variantId === 'aegis' ? 'text-[#8c6b2f] font-semibold' : 'text-[#5b5f68]'}`}>
+        <span className={`block text-[10.5px] tracking-wide ${variantId === 'pulse' ? 'text-[#8b96a5]' : variantId === 'aegis' ? 'text-[#ff8095] font-semibold' : 'text-[#5b5f68]'}`}>
           {company.permit} · New Jersey
         </span>
       </span>
@@ -114,32 +114,31 @@ function Header() {
 
   if (variantId === 'aegis')
     return (
-      <header className="sticky top-0 z-40">
-        <div className="bg-[#0c2340] text-white text-xs">
-          <div className="max-w-7xl mx-auto px-5 py-2 flex items-center gap-4">
-            <span className="hidden sm:inline text-white/75">{company.permitClass} · Verifiable on the NJ DFS registry</span>
-            <a href={company.phoneHref} className="ml-auto font-bold inline-flex items-center gap-1.5 hover:text-[#ffd166] transition-colors">
-              <Icon name="phone" size={12} /> 24/7 Emergency: {company.phone}
+      <header className={`sticky top-0 z-40 transition-all ${scrolled ? 'bg-[#0e0b0b]/95 shadow-[0_10px_40px_-16px_rgba(229,6,45,0.35)]' : 'bg-[#0e0b0b]/70'} backdrop-blur-xl border-b border-white/10`}>
+        <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center gap-6">
+          {Logo}
+          <nav className="hidden lg:flex items-center gap-6 ml-auto">
+            {NAV.map((n) => (
+              <NavLink key={n.to} to={`${base}/${n.to}`} end={n.end} className={linkCls}>
+                {n.label}
+              </NavLink>
+            ))}
+            <a href={company.phoneHref} className="inline-flex items-center gap-2 text-[13px] font-extrabold text-white">
+              <span className="relative flex">
+                <span className="absolute inline-flex w-8 h-8 rounded-full bg-[#e5062d]/50 animate-pulse-ring" />
+                <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-[#e5062d] to-[#ff6b1a] text-white">
+                  <Icon name="phone" size={14} />
+                </span>
+              </span>
+              {company.phone}
             </a>
-          </div>
+            <Link to={`${base}/contact`} className={t.btnPrimary + ' !px-5 !py-2.5 !text-xs'}>
+              Get a quote
+            </Link>
+          </nav>
+          <MobileToggle open={open} setOpen={setOpen} cls="text-white" />
         </div>
-        <div className={`transition-all ${scrolled ? 'bg-[#faf8f4]/95 backdrop-blur-xl shadow-[0_8px_30px_-14px_rgba(12,35,64,0.25)]' : 'bg-[#faf8f4]/80 backdrop-blur'} border-b border-[#0c2340]/8`}>
-          <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center gap-6">
-            {Logo}
-            <nav className="hidden lg:flex items-center gap-6 ml-auto">
-              {NAV.map((n) => (
-                <NavLink key={n.to} to={`${base}/${n.to}`} end={n.end} className={linkCls}>
-                  {n.label}
-                </NavLink>
-              ))}
-              <Link to={`${base}/contact`} className={t.btnPrimary + ' !px-6 !py-2.5 text-sm'}>
-                Request a quote
-              </Link>
-            </nav>
-            <MobileToggle open={open} setOpen={setOpen} cls="text-[#0c2340]" />
-          </div>
-          {open && <MobileNav base={base} setOpen={setOpen} cls="bg-[#faf8f4] border-t border-[#0c2340]/10 text-[#0c2340]" />}
-        </div>
+        {open && <MobileNav base={base} setOpen={setOpen} cls="bg-[#0e0b0b] border-t border-white/10 text-white" />}
       </header>
     )
 
@@ -236,9 +235,9 @@ function Footer() {
     variantId === 'ember'
       ? 'bg-[#14161a] text-white'
       : variantId === 'aegis'
-        ? 'bg-[#0c2340] text-white'
+        ? 'bg-[#0a0808] text-white border-t border-[#e5062d]/30'
         : 'bg-[#07090c] text-[#c9d2de] border-t border-white/8'
-  const brandFont = variantId === 'ember' ? 'font-archivo' : variantId === 'aegis' ? 'font-fraunces' : 'font-grotesk'
+  const brandFont = variantId === 'ember' ? 'font-archivo' : variantId === 'aegis' ? 'font-anton uppercase tracking-[0.03em]' : 'font-grotesk'
   return (
     <footer className={wrap}>
       <div className="max-w-7xl mx-auto px-5 py-16 grid gap-12 md:grid-cols-4">

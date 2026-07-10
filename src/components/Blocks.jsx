@@ -249,7 +249,7 @@ export function CTABand() {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <img src={images.cityDark} alt="" loading="lazy" className="w-full h-full object-cover" />
-        <div className={`absolute inset-0 ${variantId === 'aegis' ? 'bg-[#0c2340]/92' : variantId === 'ember' ? 'bg-[#14161a]/93' : 'bg-[#0a0c10]/93'}`} />
+        <div className={`absolute inset-0 ${variantId === 'aegis' ? 'bg-gradient-to-r from-[#1a0709]/95 to-[#0e0b0b]/92' : variantId === 'ember' ? 'bg-[#14161a]/93' : 'bg-[#0a0c10]/93'}`} />
       </div>
       <div className="relative max-w-6xl mx-auto px-5 py-20 flex flex-col lg:flex-row items-center gap-10">
         <div className="flex-1 text-center lg:text-left">

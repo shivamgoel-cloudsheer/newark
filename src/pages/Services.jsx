@@ -114,6 +114,27 @@ export default function Services() {
 export function PageHero({ kicker, title, sub }) {
   const t = useTheme()
   const { variantId } = useParams()
+  if (variantId === 'aegis')
+    return (
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0">
+          <img src={images.cityDark} alt="" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0b0b]/60 to-[#0e0b0b]" />
+          <div className="absolute -top-24 -right-24 w-[440px] h-[440px] bg-[#e5062d]/18 blur-[110px] rounded-full" />
+        </div>
+        <div className="max-w-7xl mx-auto px-5 py-16 md:py-24 relative">
+          <p className={`${t.eyebrow} animate-rise`}>{kicker}</p>
+          <h1 className="font-anton uppercase text-4xl md:text-[4.4rem] mt-4 leading-[0.98] max-w-4xl text-[#fff7f0] animate-rise" style={{ animationDelay: '80ms' }}>
+            {title}
+          </h1>
+          {sub && (
+            <p className="mt-6 text-lg max-w-2xl text-[#cbbdb5] leading-relaxed animate-rise" style={{ animationDelay: '160ms' }}>
+              {sub}
+            </p>
+          )}
+        </div>
+      </section>
+    )
   if (variantId === 'pulse')
     return (
       <section className="relative overflow-hidden">
@@ -132,13 +153,12 @@ export function PageHero({ kicker, title, sub }) {
         </div>
       </section>
     )
-  const isAegis = variantId === 'aegis'
   return (
-    <section className={`${isAegis ? 'bg-gradient-to-b from-[#f2ede3] to-[#faf8f4]' : 'bg-gradient-to-b from-[#efece6] to-[#f7f5f2]'} border-b ${t.hairline}`}>
+    <section className={`bg-gradient-to-b from-[#efece6] to-[#f7f5f2] border-b ${t.hairline}`}>
       <div className="max-w-7xl mx-auto px-5 py-16 md:py-20">
         <p className={`${t.eyebrow} animate-rise`}>{kicker}</p>
         <h1
-          className={`${t.display} text-4xl md:text-[3.6rem] mt-4 leading-[1.06] max-w-3xl ${isAegis ? 'text-[#0c2340]' : 'text-[#14161a]'} animate-rise`}
+          className={`${t.display} text-4xl md:text-[3.6rem] mt-4 leading-[1.06] max-w-3xl text-[#14161a] animate-rise`}
           style={{ animationDelay: '80ms' }}
         >
           {title}

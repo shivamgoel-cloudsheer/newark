@@ -1,167 +1,252 @@
 import { Link } from 'react-router-dom'
-import { company, caseStudies, industries, images } from '../data/content.js'
+import { company, caseStudies, services, images, stats } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
-import { Section, SectionHeading, StatBand, Testimonial, CTABand, GameTeaser, CaseStudyCard, Marquee, ProcessTimeline, FAQ, ServiceCards } from '../components/Blocks.jsx'
+import { Section, Testimonial, CTABand, GameTeaser, CaseStudyCard, ProcessTimeline, FAQ } from '../components/Blocks.jsx'
+import { useCountUp } from '../components/hooks.js'
 import { useTheme } from '../theme.jsx'
 
-// B · MERIDIAN — consultancy trust: cream, deep navy, serif display
+// B · INFERNO — cinematic fire brand: near-black, crimson heat, poster type
+
+const TICKER = [
+  '24/7 EMERGENCY RESPONSE',
+  'NJ DFS PERMIT #P01570',
+  'NICET-CERTIFIED CREWS',
+  'NFPA 25 INSPECTIONS',
+  '2,638 HEADS · ONE TOWER',
+  'REPORTS FILED IN <5 DAYS',
+  'LICENSED · BONDED · INSURED',
+]
+
+const posterImages = {
+  installation: images.heroIndustrial,
+  'service-repairs': images.engineer,
+  inspections: images.planningDesk,
+  design: images.blueprint,
+}
+
 export default function HomeAegis() {
   const t = useTheme()
   return (
     <>
-      {/* HERO — serif editorial + compliance dossier card */}
-      <Section className="relative overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[560px] bg-gradient-to-b from-[#f2ede3] to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-5 pt-16 md:pt-24 pb-14 relative grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
-          <div>
-            <p className="animate-rise inline-flex items-center gap-2 bg-white border border-[#0c2340]/12 rounded-full pl-2 pr-4 py-1.5 text-[13px] font-semibold text-[#5d6b7c] shadow-sm">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#0c2340] text-white">
-                <Icon name="shield" size={13} />
+      {/* ── HERO — full-bleed cinematic ── */}
+      <section className="relative min-h-[92vh] flex flex-col overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={images.cityDark} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0b0b]/80 via-[#0e0b0b]/60 to-[#0e0b0b]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#e5062d]/28 via-transparent to-transparent" />
+          <div className="absolute -bottom-40 -left-40 w-[640px] h-[640px] bg-[#e5062d]/22 blur-[150px] rounded-full animate-aurora" />
+        </div>
+
+        <div className="relative flex-1 flex items-center">
+          <div className="max-w-7xl mx-auto px-5 py-24 w-full">
+            <p className="animate-rise inline-flex items-center gap-2.5 text-[13px] font-bold uppercase tracking-[0.24em] text-[#ff8095]">
+              <span className="relative flex w-2.5 h-2.5">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-[#ff3b4f] animate-ping opacity-75" />
+                <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-[#ff3b4f]" />
               </span>
-              {company.permit} — verifiable on the NJ DFS public registry
+              Newark · New Jersey · {company.permit}
             </p>
-            <h1 className="animate-rise font-fraunces font-semibold text-[2.8rem] md:text-[4.1rem] leading-[1.04] text-[#0c2340] mt-7 tracking-[-0.01em]" style={{ animationDelay: '90ms' }}>
-              Compliance you can{' '}
-              <em className="italic font-medium text-[#b3202c]">sign your name to.</em>
+            <h1
+              className="animate-rise font-anton uppercase text-[17vw] sm:text-[11vw] lg:text-[7.2rem] leading-[0.92] text-[#fff7f0] mt-6"
+              style={{ animationDelay: '100ms' }}
+            >
+              Fire has a plan.
+              <br />
+              <span className="text-fire">So do we.</span>
             </h1>
-            <p className="animate-rise mt-6 text-lg text-[#5d6b7c] max-w-xl leading-relaxed" style={{ animationDelay: '180ms' }}>
-              NFPA 25 inspections filed on time, systems installed to code, and a 24/7 line
-              that answers. Fire sprinkler design, installation and service for New Jersey’s
-              property owners and managers.
-            </p>
-            <div className="animate-rise mt-9 flex flex-wrap gap-4" style={{ animationDelay: '260ms' }}>
-              <Link to="/aegis/contact" className={t.btnPrimary}>
-                Schedule an inspection <Icon name="arrow" size={16} />
-              </Link>
-              <a href={company.phoneHref} className={t.btnGhost}>
-                <Icon name="phone" size={16} /> {company.phone}
-              </a>
+            <div className="animate-rise mt-8 flex flex-col md:flex-row md:items-end gap-8" style={{ animationDelay: '200ms' }}>
+              <p className="text-lg md:text-xl text-[#cbbdb5] max-w-xl leading-relaxed">
+                Sprinkler systems designed, installed, inspected and defended around the
+                clock — by the crew that answers at 3 AM.
+              </p>
+              <div className="flex flex-wrap gap-4 md:ml-auto shrink-0">
+                <Link to="/aegis/contact" className={t.btnPrimary}>
+                  Get protected <Icon name="arrow" size={16} />
+                </Link>
+                <a href={company.phoneHref} className={t.btnGhost}>
+                  <Icon name="phone" size={16} /> {company.phone}
+                </a>
+              </div>
             </div>
-            <p className="animate-rise mt-6 text-sm text-[#5d6b7c] flex items-center gap-2" style={{ animationDelay: '320ms' }}>
-              <span className="text-emerald-600"><Icon name="check" size={15} /></span>
-              Free consultation · NICET-certified · Licensed, bonded & insured
-            </p>
+          </div>
+        </div>
+
+        {/* fire ticker */}
+        <div className="relative border-y border-white/10 bg-[#e5062d] overflow-hidden">
+          <div className="flex w-max animate-marquee py-3">
+            {[...TICKER, ...TICKER].map((m, i) => (
+              <span key={i} className="flex items-center font-anton uppercase tracking-[0.08em] text-[#0e0b0b] text-sm whitespace-nowrap">
+                <span className="px-6">{m}</span>
+                <span className="text-[#0e0b0b]/60">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES — poster cards over ghost text ── */}
+      <Section className="relative py-28 overflow-hidden">
+        <p className="absolute top-10 left-1/2 -translate-x-1/2 font-anton uppercase text-[22vw] leading-none text-stroke whitespace-nowrap pointer-events-none" aria-hidden>
+          Services
+        </p>
+        <div className="max-w-7xl mx-auto px-5 relative">
+          <div className="pt-[8vw] mb-14 flex flex-wrap items-end justify-between gap-6">
+            <div className="reveal">
+              <p className={t.eyebrow}>What we do</p>
+              <h2 className="font-anton uppercase text-4xl md:text-6xl text-[#fff7f0] mt-3 leading-[0.98]">
+                Four ways we <span className="text-fire">kill fires</span>
+                <br /> before they start.
+              </h2>
+            </div>
+            <Link to="/aegis/services" className={`${t.btnGhost} reveal`}>
+              All services <Icon name="arrow" size={15} />
+            </Link>
           </div>
 
-          {/* dossier card */}
-          <div className="relative animate-rise" style={{ animationDelay: '200ms' }}>
-            <div className="absolute -top-10 -right-6 w-64 h-64 bg-[#b3202c]/8 rounded-full blur-3xl" />
-            <div className="relative bg-white rounded-3xl shadow-[0_36px_90px_-30px_rgba(12,35,64,0.4)] border border-[#0c2340]/8 overflow-hidden">
-              <div className="h-40 relative overflow-hidden">
-                <img src={images.heroCorporate} alt="Commercial property" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c2340]/80 to-transparent" />
-                <p className="absolute bottom-3.5 left-5 text-white font-fraunces text-lg">Your compliance calendar</p>
-              </div>
-              <div className="p-7">
-                {[
-                  ['Quarterly', 'Waterflow alarms & FDC inspection'],
-                  ['Annual', 'Full system inspection & testing'],
-                  ['5-Year', 'Internal pipe & obstruction inspection'],
-                  ['Every visit', 'State forms filed with your fire official'],
-                ].map(([when, what], i) => (
-                  <div key={what} className={`flex items-start gap-3.5 py-3.5 ${i < 3 ? 'border-b border-[#0c2340]/8' : ''}`}>
-                    <span className="mt-0.5 inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 shrink-0 border border-emerald-200">
-                      <Icon name="check" size={12} />
-                    </span>
-                    <span>
-                      <span className="block text-[11px] font-bold uppercase tracking-[0.14em] text-[#8c6b2f]">{when}</span>
-                      <span className="block text-sm font-semibold text-[#1d2a3a] mt-0.5">{what}</span>
-                    </span>
-                  </div>
-                ))}
-                <div className="mt-5 flex items-center justify-between bg-[#faf8f4] border border-[#0c2340]/8 rounded-xl px-4 py-3">
-                  <span className="text-xs font-semibold text-[#5d6b7c]">NJ 5-business-day filing rule</span>
-                  <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">Handled by us</span>
+          <div className="grid md:grid-cols-2 gap-5">
+            {services.map((s, i) => (
+              <Link
+                key={s.slug}
+                to="/aegis/services"
+                className="group relative rounded-xl overflow-hidden border border-white/10 min-h-[300px] flex items-end img-zoom reveal hover:border-[#ff3b4f]/50 transition-colors"
+                style={{ transitionDelay: `${(i % 2) * 90}ms` }}
+              >
+                <img src={posterImages[s.slug]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-75 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e0b0b] via-[#0e0b0b]/40 to-transparent" />
+                <div className="absolute top-5 right-6 font-anton text-5xl text-white/12 group-hover:text-[#ff3b4f]/70 transition-colors">
+                  0{i + 1}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-5">
-          <Marquee />
-        </div>
-      </Section>
-
-      {/* SERVICES — photo cards */}
-      <Section className="py-24">
-        <div className="max-w-7xl mx-auto px-5">
-          <SectionHeading
-            center
-            kicker="Services"
-            title="One partner for the full system lifecycle"
-            sub="From the first shop drawing to the 3 AM emergency call — a single accountable contractor."
-          />
-          <ServiceCards />
-        </div>
-      </Section>
-
-      {/* INDUSTRIES — quiet band */}
-      <Section className="py-24 bg-white border-y border-[#0c2340]/8">
-        <div className="max-w-7xl mx-auto px-5">
-          <SectionHeading center kicker="Who we protect" title="Every property type in New Jersey" />
-          <div className="grid md:grid-cols-4 gap-6">
-            {industries.map((ind, i) => (
-              <div key={ind.name} className="text-center px-4 reveal" style={{ transitionDelay: `${i * 80}ms` }}>
-                <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0c2340]/5 text-[#0c2340] border border-[#0c2340]/10">
-                  <Icon name="building" size={26} />
-                </span>
-                <h3 className="font-fraunces font-semibold text-xl text-[#0c2340] mt-4">{ind.name}</h3>
-                <p className="text-sm text-[#5d6b7c] mt-2 leading-relaxed">{ind.desc}</p>
-              </div>
+                <div className="relative p-7 md:p-9">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#ff8095]">{s.tagline}</p>
+                  <h3 className="font-anton uppercase text-2xl md:text-[2rem] text-[#fff7f0] mt-2 leading-tight">{s.title}</h3>
+                  <p className="text-sm text-[#cbbdb5] mt-3 max-w-md leading-relaxed line-clamp-2">{s.desc}</p>
+                  <span className="inline-flex items-center gap-2 mt-4 text-sm font-extrabold uppercase tracking-wide text-white group-hover:text-[#ff3b4f] group-hover:gap-3.5 transition-all">
+                    Explore <Icon name="arrow" size={15} />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </Section>
 
-      {/* STATS + PROCESS */}
-      <Section alt className="py-20">
-        <div className="max-w-6xl mx-auto px-5">
-          <StatBand light />
-        </div>
-      </Section>
-      <Section className="py-24">
-        <div className="max-w-7xl mx-auto px-5">
-          <SectionHeading kicker="How we work" title="A process your fire official will recognize" />
-          <ProcessTimeline />
+      {/* ── GIANT STATS ── */}
+      <Section alt className="py-24 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-5 grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
+          {stats.map((s, i) => (
+            <GiantStat key={s.label} value={s.value} label={s.label} delay={i * 80} />
+          ))}
         </div>
       </Section>
 
-      {/* CASE STUDIES */}
-      <Section className="py-24 bg-white border-y border-[#0c2340]/8">
+      {/* ── FLAGSHIP — full-bleed case band ── */}
+      <section className="relative min-h-[560px] flex items-end overflow-hidden">
+        <img src={images.buildingGlass} alt="301 West Side Avenue" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0b0b] via-[#0e0b0b]/55 to-[#0e0b0b]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#e5062d]/20 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-5 pb-16 pt-40 w-full">
+          <p className={t.eyebrow}>Flagship · Jersey City</p>
+          <h2 className="font-anton uppercase text-4xl md:text-7xl text-[#fff7f0] mt-3 leading-[0.95] max-w-4xl">
+            2,638 heads. 202 homes.
+            <br />
+            <span className="text-fire">One deadline — met.</span>
+          </h2>
+          <div className="mt-8 flex flex-wrap items-center gap-x-12 gap-y-5">
+            {caseStudies[0].metrics.map((m) => (
+              <div key={m.label}>
+                <p className="font-anton text-3xl md:text-4xl text-white">{m.value}</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[#cbbdb5] mt-1">{m.label}</p>
+              </div>
+            ))}
+            <Link to="/aegis/case-studies" className={`${t.btnSecondary} md:ml-auto`}>
+              All case studies <Icon name="arrow" size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EMERGENCY WALL ── */}
+      <Section className="py-28">
         <div className="max-w-7xl mx-auto px-5">
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <SectionHeading kicker="Case studies" title="Work we can point to" />
-            <Link to="/aegis/case-studies" className={`${t.btnGhost} mb-14 reveal`}>
+          <div className="burn-glow relative rounded-2xl border border-[#e5062d]/40 bg-gradient-to-br from-[#1c0b0d] to-[#0e0b0b] overflow-hidden reveal">
+            <div className="absolute -top-24 right-0 w-96 h-96 bg-[#e5062d]/25 blur-[110px] rounded-full" />
+            <div className="relative px-7 md:px-14 py-14 md:py-16 text-center">
+              <p className="font-manrope font-extrabold uppercase tracking-[0.3em] text-[#ff8095] text-sm">
+                Burst pipe? Impaired system? Frozen line?
+              </p>
+              <a href={company.phoneHref} className="block font-anton text-[13vw] lg:text-[7.5rem] leading-none text-[#fff7f0] mt-6 hover:text-fire transition-colors">
+                (973) 817-8114
+              </a>
+              <p className="mt-6 text-[#cbbdb5] max-w-xl mx-auto">
+                Answered 24/7, every day of the year — by a technician, not a machine.
+                We manage the impairment paperwork with your fire official too.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ── PROCESS ── */}
+      <Section alt className="py-24 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="reveal mb-14">
+            <p className={t.eyebrow}>How we work</p>
+            <h2 className="font-anton uppercase text-4xl md:text-5xl text-[#fff7f0] mt-3">
+              Walkthrough → <span className="text-fire">sign-off</span>
+            </h2>
+          </div>
+          <ProcessTimeline light />
+        </div>
+      </Section>
+
+      {/* ── CASE GRID ── */}
+      <Section className="py-24">
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="flex items-end justify-between gap-6 flex-wrap mb-14">
+            <div className="reveal">
+              <p className={t.eyebrow}>Track record</p>
+              <h2 className="font-anton uppercase text-4xl md:text-5xl text-[#fff7f0] mt-3">Proof, not promises</h2>
+            </div>
+            <Link to="/aegis/case-studies" className={`${t.btnGhost} reveal`}>
               View all <Icon name="arrow" size={15} />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {caseStudies.slice(0, 3).map((cs, i) => (
+            {caseStudies.slice(1).map((cs, i) => (
               <CaseStudyCard key={cs.slug} cs={cs} delay={i * 90} />
             ))}
           </div>
         </div>
       </Section>
 
-      {/* TESTIMONIAL */}
-      <Section className="py-24">
-        <div className="max-w-7xl mx-auto px-5">
-          <Testimonial />
-        </div>
-      </Section>
-
-      {/* GAME + FAQ */}
+      {/* ── GAME + TESTIMONIAL + FAQ ── */}
       <Section className="pb-24">
         <div className="max-w-7xl mx-auto px-5">
           <GameTeaser />
           <div className="mt-24">
-            <SectionHeading center kicker="Questions" title="What building owners ask us" />
-            <FAQ />
+            <Testimonial light />
+          </div>
+          <div className="mt-24">
+            <div className="reveal text-center mb-14">
+              <p className={t.eyebrow}>Questions</p>
+              <h2 className="font-anton uppercase text-4xl md:text-5xl text-[#fff7f0] mt-3">Straight answers</h2>
+            </div>
+            <FAQ light />
           </div>
         </div>
       </Section>
 
       <CTABand />
     </>
+  )
+}
+
+function GiantStat({ value, label, delay }) {
+  const [ref, text] = useCountUp(value)
+  return (
+    <div ref={ref} className="text-center reveal" style={{ transitionDelay: `${delay}ms` }}>
+      <p className="font-anton text-6xl md:text-[5.4rem] leading-none text-fire">{text}</p>
+      <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#a3948c] mt-3">{label}</p>
+    </div>
   )
 }

@@ -36,37 +36,37 @@ export const themes = {
     chip: 'border border-[#14161a]/20 bg-white hover:border-[#c8102e] hover:text-[#c8102e] text-xs font-semibold px-3 py-1.5 rounded-full transition-colors',
   },
 
-  // ── B · MERIDIAN — consultancy trust: cream, deep navy, serif display ──
+  // ── B · INFERNO — cinematic fire brand: near-black, crimson heat, poster type ──
   aegis: {
     id: 'aegis',
-    name: 'Meridian',
-    body: 'font-manrope bg-[#faf8f4] text-[#1d2a3a]',
-    display: 'font-fraunces font-semibold tracking-[-0.01em]',
-    serif: 'font-fraunces',
-    eyebrow: 'font-manrope font-bold uppercase tracking-[0.18em] text-xs text-[#8c6b2f]',
-    accentText: 'text-[#b3202c]',
-    muted: 'text-[#5d6b7c]',
-    hairline: 'border-[#0c2340]/12',
+    name: 'Inferno',
+    body: 'font-manrope bg-[#0e0b0b] text-[#f3ece6]',
+    display: 'font-anton uppercase tracking-[0.015em] font-normal',
+    serif: 'font-anton uppercase tracking-[0.015em]',
+    eyebrow: 'font-manrope font-extrabold uppercase tracking-[0.24em] text-xs text-[#ff3b4f]',
+    accentText: 'text-[#ff3b4f]',
+    muted: 'text-[#a3948c]',
+    hairline: 'border-white/10',
     section: 'py-24',
-    sectionAlt: 'bg-[#0c2340] text-white',
+    sectionAlt: 'bg-[#150d0d]',
     btnPrimary:
-      'inline-flex items-center justify-center gap-2 bg-[#0c2340] text-white font-bold px-8 py-4 rounded-full shadow-[0_14px_34px_-14px_rgba(12,35,64,0.6)] hover:bg-[#16345c] hover:-translate-y-0.5 transition-all',
+      'inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#e5062d] to-[#ff6b1a] text-white font-extrabold uppercase tracking-wide text-sm px-8 py-4 rounded-md shadow-[0_14px_44px_-12px_rgba(229,6,45,0.7)] hover:shadow-[0_18px_54px_-10px_rgba(229,6,45,0.9)] hover:-translate-y-0.5 transition-all',
     btnSecondary:
-      'inline-flex items-center justify-center gap-2 bg-[#b3202c] text-white font-bold px-8 py-4 rounded-full shadow-[0_14px_34px_-14px_rgba(179,32,44,0.55)] hover:bg-[#98131e] hover:-translate-y-0.5 transition-all',
+      'inline-flex items-center justify-center gap-2 bg-[#fff7f0] text-[#0e0b0b] font-extrabold uppercase tracking-wide text-sm px-8 py-4 rounded-md hover:bg-white hover:-translate-y-0.5 transition-all',
     btnGhost:
-      'inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-full border border-[#0c2340]/25 text-[#0c2340] hover:border-[#0c2340] transition-colors',
-    card: 'bg-white rounded-3xl border border-[#0c2340]/8 shadow-[0_2px_4px_rgba(12,35,64,0.04),0_24px_60px_-30px_rgba(12,35,64,0.28)]',
-    cardHover: 'hover:-translate-y-1 hover:shadow-[0_4px_8px_rgba(12,35,64,0.05),0_32px_70px_-30px_rgba(12,35,64,0.4)] transition-all duration-300',
+      'inline-flex items-center justify-center gap-2 font-extrabold uppercase tracking-wide text-sm px-8 py-4 rounded-md border border-white/25 text-white hover:border-[#ff3b4f] hover:text-[#ff3b4f] transition-colors',
+    card: 'bg-[#171010] rounded-xl border border-white/8',
+    cardHover: 'hover:border-[#ff3b4f]/40 hover:-translate-y-1 transition-all duration-300',
     badge:
-      'inline-flex items-center gap-1.5 bg-[#0c2340]/6 text-[#0c2340] font-bold text-[11px] uppercase tracking-[0.14em] px-3.5 py-1.5 rounded-full border border-[#0c2340]/10',
+      'inline-flex items-center gap-1.5 bg-[#e5062d]/12 text-[#ff8095] font-extrabold text-[11px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-md border border-[#e5062d]/30',
     input:
-      'w-full bg-white border border-[#0c2340]/15 rounded-xl px-4 py-3 outline-none focus:border-[#0c2340] focus:ring-2 focus:ring-[#0c2340]/15 transition-all',
-    chatBtn: 'bg-[#0c2340] text-white rounded-full shadow-xl shadow-[#0c2340]/35',
-    chatPanel: 'bg-white rounded-3xl shadow-2xl border border-[#0c2340]/10',
-    chatHeader: 'bg-[#0c2340] text-white rounded-t-3xl',
-    bubbleBot: 'bg-[#f1ede4] text-[#1d2a3a] rounded-2xl rounded-bl-sm',
-    bubbleUser: 'bg-[#0c2340] text-white rounded-2xl rounded-br-sm',
-    chip: 'border border-[#0c2340]/20 bg-white hover:border-[#0c2340] hover:bg-[#0c2340]/5 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors',
+      'w-full bg-white/[0.05] border border-white/15 rounded-md px-4 py-3 text-white outline-none focus:border-[#ff3b4f]/70 focus:bg-white/[0.08] transition-all placeholder:text-[#6d5f58]',
+    chatBtn: 'bg-gradient-to-r from-[#e5062d] to-[#ff6b1a] text-white rounded-full shadow-xl shadow-red-600/40',
+    chatPanel: 'bg-[#171010] rounded-2xl shadow-2xl border border-white/10',
+    chatHeader: 'bg-gradient-to-r from-[#e5062d]/25 to-transparent text-white rounded-t-2xl border-b border-white/10',
+    bubbleBot: 'bg-white/[0.07] text-[#f3ece6] rounded-2xl rounded-bl-sm border border-white/5',
+    bubbleUser: 'bg-gradient-to-r from-[#e5062d] to-[#ff6b1a] text-white font-medium rounded-2xl rounded-br-sm',
+    chip: 'border border-white/15 bg-white/[0.05] hover:border-[#ff3b4f]/60 hover:bg-[#e5062d]/10 text-xs font-bold px-3 py-1.5 rounded-md transition-colors',
   },
 
   // ── C · SENTINEL — precision dark: grid, aurora, gradient borders ──

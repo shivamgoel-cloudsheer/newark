@@ -101,31 +101,23 @@ function MiniPreview({ variant }) {
     )
   if (variant.id === 'aegis')
     return (
-      <div className="h-40 p-3" style={{ background: paper }}>
-        <div className="h-3 mb-1 rounded-sm flex items-center px-2" style={{ background: bg }}>
-          <span className="w-14 h-1 bg-white/50" />
-          <span className="ml-auto w-8 h-1 bg-white/70" />
+      <div className="h-40 p-3 relative overflow-hidden" style={{ background: bg }}>
+        <div className="absolute -bottom-12 -left-10 w-40 h-40 rounded-full blur-2xl opacity-50" style={{ background: accent }} />
+        <div className="h-4 mb-4 flex items-center gap-1.5 px-1 relative">
+          <span className="w-2.5 h-2.5 rounded-sm" style={{ background: `linear-gradient(135deg, ${accent}, ${gold})` }} />
+          <span className="w-11 h-1.5 rounded bg-white/60" />
+          <span className="ml-auto w-9 h-3 rounded-sm" style={{ background: `linear-gradient(90deg, ${accent}, ${gold})` }} />
         </div>
-        <div className="h-5 mb-3 bg-white rounded-sm shadow-sm flex items-center px-2 gap-2">
-          <span className="w-2.5 h-2.5 rounded-full" style={{ background: accent }} />
-          <span className="w-8 h-1.5 rounded" style={{ background: bg }} />
-          <span className="ml-auto w-9 h-2.5 rounded-md" style={{ background: accent }} />
+        <div className="relative px-1">
+          <div className="w-11/12 h-5 rounded-sm mb-1.5" style={{ background: paper }} />
+          <div className="w-3/5 h-5 rounded-sm mb-2.5" style={{ background: `linear-gradient(90deg, ${accent}, ${gold})` }} />
+          <div className="w-2/3 h-1.5 rounded bg-white/25 mb-1" />
+          <div className="w-1/2 h-1.5 rounded bg-white/25" />
         </div>
-        <div className="flex gap-3">
-          <div className="flex-1">
-            <div className="w-full h-3.5 rounded mb-1.5" style={{ background: bg }} />
-            <div className="w-2/3 h-3.5 rounded mb-2" style={{ background: accent }} />
-            <div className="w-full h-1.5 rounded mb-1 bg-slate-300" />
-            <div className="w-4/5 h-1.5 rounded bg-slate-300" />
-          </div>
-          <div className="w-2/5 h-20 bg-white rounded-lg shadow-md p-2">
-            {[0, 1, 2].map((k) => (
-              <div key={k} className="flex items-center gap-1.5 mb-2">
-                <span className="w-2 h-2 rounded-full" style={{ background: '#3d7dca' }} />
-                <span className="flex-1 h-1.5 rounded bg-slate-200" />
-              </div>
-            ))}
-          </div>
+        <div className="absolute bottom-0 inset-x-0 h-4 flex items-center gap-2 px-2" style={{ background: accent }}>
+          {[0, 1, 2, 3].map((k) => (
+            <span key={k} className="h-1.5 rounded bg-black/40" style={{ width: `${18 + k * 6}px` }} />
+          ))}
         </div>
       </div>
     )
