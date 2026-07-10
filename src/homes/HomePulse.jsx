@@ -36,9 +36,16 @@ export default function HomePulse() {
             <Link to="/pulse/contact" className={`${t.btnPrimary} text-base`}>
               Get protected <Icon name="arrow" size={17} />
             </Link>
-            <Link to="/pulse/game" className={`${t.btnSecondary} text-base`}>
+            <a
+              href="#fire-drill"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('fire-drill')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+              }}
+              className={`${t.btnSecondary} text-base`}
+            >
               <Icon name="gamepad" size={18} /> Run the fire drill
-            </Link>
+            </a>
           </div>
 
           {/* system status console */}

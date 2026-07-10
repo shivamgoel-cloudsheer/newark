@@ -4,6 +4,7 @@ import { useTheme } from '../theme.jsx'
 import { services, caseStudies, stats, trustBadges, testimonial, company, marqueeItems, process, faqs, images } from '../data/content.js'
 import { Icon } from './Icons.jsx'
 import { useRevealAll, useCountUp } from './hooks.js'
+import FireGame from './FireGame.jsx'
 
 // ─── primitives ───────────────────────────────────────────────────────────────
 
@@ -275,11 +276,46 @@ export function CTABand() {
   )
 }
 
+const gameFacts = [
+  { stat: '~96%', text: 'of fires are controlled when sprinklers operate — usually by just 1–2 heads (NFPA).' },
+  { stat: '↓ 85%', text: 'lower risk of dying in a fire in sprinklered properties.' },
+  { stat: '10–25×', text: 'less water used by a sprinkler than a fire hose — less fire AND less water damage.' },
+  { stat: '#1 cause', text: 'of sprinkler failure is human error: closed valves and skipped maintenance.' },
+]
+
+// Fire Drill plays inline, right here — no separate page.
 export function GameTeaser() {
   const t = useTheme()
-  const { variantId } = useParams()
+  const [open, setOpen] = useState(false)
+
+  if (open)
+    return (
+      <div id="fire-drill">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+          <div>
+            <p className={t.eyebrow}>Interactive · The Fire Drill</p>
+            <h3 className={`${t.display} text-2xl md:text-[2.1rem] leading-[1.12] mt-2`}>
+              Place your heads. <span className={t.accentText}>Then survive the fire.</span>
+            </h3>
+          </div>
+          <button onClick={() => setOpen(false)} className={t.chip + ' !py-2'}>
+            ✕ Minimize game
+          </button>
+        </div>
+        <FireGame />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          {gameFacts.map((f) => (
+            <div key={f.stat} className={`${t.card} p-5`}>
+              <p className={`${t.display} text-2xl ${t.accentText}`}>{f.stat}</p>
+              <p className={`text-xs mt-1.5 leading-relaxed ${t.muted}`}>{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+
   return (
-    <div className={`${t.card} overflow-hidden grid lg:grid-cols-2 reveal`}>
+    <div id="fire-drill" className={`${t.card} overflow-hidden grid lg:grid-cols-2 reveal`}>
       <div className="p-9 md:p-12">
         <p className={t.eyebrow}>Interactive · 60 seconds</p>
         <h3 className={`${t.display} text-2xl md:text-[2.1rem] leading-[1.12] mt-3`}>
@@ -290,11 +326,15 @@ export function GameTeaser() {
           spreading flames, evacuating people, heads triggering on heat. Then see the same
           fire with no protection at all.
         </p>
-        <Link to={`/${variantId}/game`} className={`${t.btnPrimary} mt-7`}>
-          <Icon name="gamepad" size={18} /> Launch the simulator
-        </Link>
+        <button onClick={() => setOpen(true)} className={`${t.btnPrimary} mt-7`}>
+          <Icon name="gamepad" size={18} /> Play right here
+        </button>
       </div>
-      <div className="relative min-h-[260px] bg-[#0a0c10] flex items-center justify-center overflow-hidden">
+      <button
+        onClick={() => setOpen(true)}
+        className="relative min-h-[260px] bg-[#0a0c10] flex items-center justify-center overflow-hidden cursor-pointer group"
+        aria-label="Play the fire drill"
+      >
         <div className="absolute inset-0 bg-grid-dark" />
         <div className="grid grid-cols-5 gap-2 relative" aria-hidden>
           {Array.from({ length: 25 }).map((_, i) => (
@@ -311,7 +351,12 @@ export function GameTeaser() {
             />
           ))}
         </div>
-      </div>
+        <span className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/45 transition-colors">
+          <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white font-bold text-sm bg-white/15 backdrop-blur border border-white/25 rounded-full px-5 py-2.5">
+            ▶ Click to play
+          </span>
+        </span>
+      </button>
     </div>
   )
 }

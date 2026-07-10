@@ -14,7 +14,6 @@ import Blog from '../pages/Blog.jsx'
 import BlogPost from '../pages/BlogPost.jsx'
 import About from '../pages/About.jsx'
 import Contact from '../pages/Contact.jsx'
-import GamePage from '../pages/GamePage.jsx'
 
 const NAV = [
   { to: '', label: 'Home', end: true },
@@ -22,7 +21,6 @@ const NAV = [
   { to: 'case-studies', label: 'Case Studies' },
   { to: 'blog', label: 'Blog' },
   { to: 'about', label: 'About' },
-  { to: 'game', label: 'Fire Drill' },
   { to: 'contact', label: 'Contact' },
 ]
 
@@ -47,7 +45,6 @@ export default function VariantSite() {
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="game" element={<GamePage />} />
             <Route path="*" element={<Navigate to={`/${variantId}`} replace />} />
           </Routes>
         </div>

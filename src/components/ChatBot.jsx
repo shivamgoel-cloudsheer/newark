@@ -73,7 +73,7 @@ const INTENTS = [
   {
     match: /game|simulat|play/i,
     reply: () => ({
-      text: `We built a fire simulator you can play right on this site — place sprinkler heads on a budget, then watch a fire break out and see how much of the building you save. Try the "Fire Drill Game" tab!`,
+      text: `We built a fire simulator you can play right on the home page — place sprinkler heads on a budget, then watch a fire break out and see how much of the building you save. Taking you there now!`,
       chips: ['What services?', 'Get a quote'],
       goGame: true,
     }),
@@ -158,7 +158,16 @@ export default function ChatBot() {
     if (intent) {
       const r = intent.reply()
       botSay(r)
-      if (r.goGame) setTimeout(() => navigate(`/${variantId}/game`), 1600)
+      if (r.goGame)
+        setTimeout(() => {
+          const el = document.getElementById('fire-drill')
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          } else {
+            navigate(`/${variantId}`)
+            setTimeout(() => document.getElementById('fire-drill')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 700)
+          }
+        }, 1400)
       return
     }
     botSay(FALLBACK)
