@@ -47,17 +47,17 @@ export default function HomeAegis() {
               Newark · New Jersey · {company.permit}
             </p>
             <h1
-              className="animate-rise font-anton uppercase text-[17vw] sm:text-[11vw] lg:text-[7.2rem] leading-[0.92] text-[#fff7f0] mt-6"
+              className="animate-rise font-anton uppercase text-[15vw] sm:text-[10vw] lg:text-[6.4rem] leading-[0.94] text-[#fff7f0] mt-6"
               style={{ animationDelay: '100ms' }}
             >
-              Fire has a plan.
+              Total fire protection.
               <br />
-              <span className="text-fire">So do we.</span>
+              <span className="text-fire">Tailored to you.</span>
             </h1>
             <div className="animate-rise mt-8 flex flex-col md:flex-row md:items-end gap-8" style={{ animationDelay: '200ms' }}>
               <p className="text-lg md:text-xl text-[#cbbdb5] max-w-xl leading-relaxed">
-                {company.tagline}. Expertly designed, installed and maintained fire safety
-                systems you can rely on — by the crew that answers at 3 AM.
+                Expertly designed, installed and maintained fire safety systems you can
+                rely on — by the crew that answers at 3 AM.
               </p>
               <div className="flex flex-wrap gap-4 md:ml-auto shrink-0">
                 <Link to="/aegis/contact" className={t.btnPrimary}>
