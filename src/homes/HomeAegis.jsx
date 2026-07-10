@@ -56,8 +56,8 @@ export default function HomeAegis() {
             </h1>
             <div className="animate-rise mt-8 flex flex-col md:flex-row md:items-end gap-8" style={{ animationDelay: '200ms' }}>
               <p className="text-lg md:text-xl text-[#cbbdb5] max-w-xl leading-relaxed">
-                Sprinkler systems designed, installed, inspected and defended around the
-                clock — by the crew that answers at 3 AM.
+                {company.tagline}. Expertly designed, installed and maintained fire safety
+                systems you can rely on — by the crew that answers at 3 AM.
               </p>
               <div className="flex flex-wrap gap-4 md:ml-auto shrink-0">
                 <Link to="/aegis/contact" className={t.btnPrimary}>

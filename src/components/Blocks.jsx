@@ -133,9 +133,9 @@ export function ServiceCards() {
 
 const csImages = {
   'singh-tower': images.buildingGlass,
-  'logistics-warehouse': images.warehouse,
-  'mixed-use-newark': images.buildingWhite,
-  'restaurant-repair': images.interior,
+  'urby-harrison': images.buildingWhite,
+  'port-carteret': images.warehouse,
+  'grove-street': images.heroCorporate,
 }
 export const caseStudyImage = (slug) => csImages[slug] || images.buildingGlass
 

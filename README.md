@@ -30,8 +30,12 @@ npm run build    # production build to dist/
 
 Deploys as a static SPA — `vercel.json` contains the history-fallback rewrite.
 
+## Content
+
+All copy in `src/data/content.js` is sourced from the client's live site (newarkfiresprinkler.com, fetched 2026-07-10): mission, core values, full 19-person team roster, service descriptions, the 301 West Side Ave flagship stats, and the 40+ real project addresses from /work. Photography is Unsplash placeholder stock — swap for the client's real project photos before launch.
+
 ## Before launch (whichever concept wins)
 
-- Case studies other than 301 West Side Ave are **illustrative samples** (`sample: true` in `content.js`) — replace with real projects.
+- Replace stock photos with the client's own project photography (they have a /work gallery with 80+ images).
 - The contact form and chatbot lead capture are demo-only (no backend). Wire to email/CRM.
 - Confirm the "30 years" experience framing and the canonical company address with the client (see `RESEARCH.md` §8).

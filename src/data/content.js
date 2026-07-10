@@ -1,12 +1,16 @@
-// Central content store — real facts sourced from RESEARCH.md.
-// Case studies other than Singh Tower are illustrative samples to be
-// replaced with real client projects before launch (sample: true).
+// Central content store — copy sourced verbatim from newarkfiresprinkler.com
+// (fetched 2026-07-10) plus licensing facts from RESEARCH.md.
 
 export const company = {
   name: 'Newark Fire Sprinkler Corp.',
   shortName: 'Newark Fire Sprinkler',
   tagline: 'Total Fire Protection, Tailored to You',
   hero: 'Expertly Designed, Installed, and Maintained Fire Safety Systems You Can Rely On',
+  slogan: 'Your Safety, Our Priority',
+  mission:
+    'Our mission is to deliver customized fire protection services that exceed expectations and protect what matters most.',
+  story:
+    'With over three decades of experience in serving the fire protection needs of businesses, organizations, offices and more in New Jersey, Newark Fire Sprinkler Corp. offers the most robust services when it comes to designing and implementing fire sprinkler systems.',
   phone: '(973) 817-8114',
   phoneHref: 'tel:+19738178114',
   email: 'Sales@Newarkfiresprinkler.com',
@@ -14,7 +18,7 @@ export const company = {
   permit: 'NJ DFS Permit #P01570',
   permitClass: 'Class C2 — Fire Sprinkler Systems',
   serviceArea: 'Serving all of New Jersey',
-  experience: '30+ years of combined fire protection leadership',
+  experience: '30 Years of Fire Protection Leadership',
   portal: 'https://payments.coretechsolutions.app/',
 }
 
@@ -46,15 +50,166 @@ export const images = {
 export const marqueeItems = [
   'NJ DFS Permit #P01570',
   'NICET-Certified Technicians',
-  'NFPA 13 Design',
+  '30 Years of Fire Protection Leadership',
   'NFPA 25 Inspections',
-  'OSHA Compliant',
-  'ICC Standards',
+  'Custom Design & Shop Drawings',
   'Licensed · Bonded · Insured',
-  '24/7 Emergency Dispatch',
-  'In-House Engineering',
+  '24/7 Peace of Mind',
+  'In-House Design Team',
   'Serving All of New Jersey',
 ]
+
+export const trustBadges = [
+  { label: 'NJ Licensed', detail: 'DFS Permit #P01570' },
+  { label: 'NICET Certified', detail: 'Certified technicians' },
+  { label: 'NFPA Compliant', detail: 'Latest codes & standards' },
+  { label: 'Fully Insured', detail: 'Licensed, bonded & insured' },
+]
+
+// Homepage-verified numbers: featured project stats + portfolio size
+export const stats = [
+  { value: '30', label: 'Years of fire protection leadership' },
+  { value: '40+', label: 'Projects across NJ & NY' },
+  { value: '2,638', label: 'Sprinklers in one flagship install' },
+  { value: '24/7', label: 'Peace of mind' },
+]
+
+export const services = [
+  {
+    slug: 'installation',
+    icon: 'install',
+    title: 'Fire Sprinkler Installation',
+    tagline: 'Expertly designed, tailored to your needs',
+    desc: 'Protect your property with expertly designed and installed fire sprinkler systems tailored to your needs. A fire can quickly turn a thriving business or comfortable home into a mess of damage and debris — our NICET-certified technicians install systems for residential, commercial and industrial spaces that stop it before it spreads.',
+    features: [
+      'Residential — systems that activate instantly to stop fire spread',
+      'Commercial — offices, retail spaces and restaurants',
+      'Industrial — high-risk areas like factories and warehouses',
+      'Custom designs crafted by our in-house design team',
+    ],
+  },
+  {
+    slug: 'service-repairs',
+    icon: 'wrench',
+    title: 'Fire Sprinkler Service & Repairs',
+    tagline: 'Keep your fire protection systems running at their best',
+    desc: 'Regular service and timely repairs are critical to ensuring your fire sprinkler system functions when you need it most. We maintain and repair residential, commercial and industrial fire protection systems — keeping you compliant, secure, and prepared.',
+    features: [
+      'Routine service & scheduled maintenance',
+      'Emergency repairs with minimal downtime',
+      'Hydrant and pump testing',
+      'System upgrades & leak detection',
+    ],
+  },
+  {
+    slug: 'inspections',
+    icon: 'clipboard',
+    title: 'Fire Sprinkler Inspections',
+    tagline: 'Stay compliant and prepared',
+    desc: 'Stay compliant and prepared with professional fire sprinkler inspections from Newark Fire Sprinkler Corp. Our licensed and certified team conducts thorough inspections to verify code compliance and component functionality — with documentation that meets all compliance requirements.',
+    features: [
+      'Quarterly, annual & 5-year NFPA 25 inspections',
+      'Code compliance & component verification',
+      'Compliance testing & documentation',
+      'Reports filed with your local fire official',
+    ],
+  },
+  {
+    slug: 'design',
+    icon: 'blueprint',
+    title: 'Custom Design & Shop Drawings',
+    tagline: 'An in-house design team, not a subcontractor',
+    desc: 'Every property is unique, which is why we offer custom fire sprinkler designs and shop drawings tailored to your specific needs. Our in-house design team creates efficient systems that meet local and national regulations — from hydraulic calculations to permit-ready submittals.',
+    features: [
+      'Custom fire sprinkler designs',
+      'Coordinated shop drawings',
+      'Hydraulic calculations',
+      'Local & national code compliance',
+    ],
+  },
+]
+
+// Real projects from newarkfiresprinkler.com/work
+export const caseStudies = [
+  {
+    slug: 'singh-tower',
+    sector: 'Multi-Unit Residential',
+    title: '301 West Side Avenue, Jersey City',
+    summary:
+      'The flagship: a 218,028 sq ft multi-unit residential tower protected by 2,638 sprinklers — designed, installed and commissioned by our team.',
+    metrics: [
+      { value: '218,028', label: 'sq. feet' },
+      { value: '2,638', label: 'sprinklers' },
+      { value: 'Multi-unit', label: 'residential' },
+    ],
+    body: 'Featured on our portfolio as the definitive proof of scale: full system design by our in-house team, coordinated shop drawings, and installation across every residential floor and amenity space.',
+    accent: '#e2543a',
+  },
+  {
+    slug: 'urby-harrison',
+    sector: 'Residential',
+    title: 'URBY4, Harrison, NJ',
+    summary:
+      'Full sprinkler coverage for the URBY4 development in Harrison — one of 29 residential projects delivered by our Residential & Commercial division across NJ and NY.',
+    metrics: [
+      { value: 'Harrison', label: 'New Jersey' },
+      { value: 'Residential', label: 'division' },
+      { value: '29', label: 'residential projects' },
+    ],
+    body: 'Our residential portfolio spans from Tarrytown, NY to Burlington, NJ — including 5 Port Imperial Blvd in Weehawken, 155 Washington Street in Newark, Aberdeen Senior Apartments in Jersey City and the River Club in Bogota.',
+    accent: '#2b6cb0',
+  },
+  {
+    slug: 'port-carteret',
+    sector: 'Industrial',
+    title: '580 Port Carteret Drive, Carteret, NJ',
+    summary:
+      'Industrial fire suppression for port-area logistics — alongside projects in Secaucus, Edison, Mansfield Township and Montgomery, NY.',
+    metrics: [
+      { value: 'Carteret', label: 'New Jersey' },
+      { value: 'Industrial', label: 'division' },
+      { value: '5', label: 'industrial sites' },
+    ],
+    body: 'Our Industrial division handles high-risk environments: 25 Enterprise Ave N in Secaucus, 2900 Woodbridge Ave in Edison, 3275 Route 206 in Mansfield Township and 134 Neelytown Rd in Montgomery, NY.',
+    accent: '#b7791f',
+  },
+  {
+    slug: 'grove-street',
+    sector: 'Mixed-Use',
+    title: '101 Grove Street, Jersey City',
+    summary:
+      'Mixed-use protection in the heart of Jersey City — with sister projects at 2-16 Spring Street, Newark and Meridia Transit Plaza, Dover.',
+    metrics: [
+      { value: 'Jersey City', label: 'New Jersey' },
+      { value: 'Mixed-use', label: 'sector' },
+      { value: '3', label: 'mixed-use projects' },
+    ],
+    body: 'Multi-occupancy buildings demand zoned systems engineered for every use group under one roof — retail at street level, residences above, one compliant system throughout.',
+    accent: '#6b46c1',
+  },
+]
+
+// Full portfolio (real addresses from /work) for the case-studies page
+export const portfolio = {
+  Residential: [
+    'URBY4 · Harrison, NJ', '5 Port Imperial Blvd · Weehawken, NJ', '155 Washington St · Newark, NJ',
+    '711 Montgomery St · Jersey City, NJ', '270 Johnston Ave · Jersey City, NJ', '622-628 Summit Ave · Jersey City, NJ',
+    'Aberdeen Senior Apts · Jersey City, NJ', '39 New York Ave · Jersey City, NJ', '705 Newark Ave · Elizabeth, NJ',
+    '538 Morris Ave · Elizabeth, NJ', '588 Bloomfield Ave · Bloomfield, NJ', '555 Northfield Ave · West Orange, NJ',
+    '416 Highland Ave · Orange, NJ', '284 King George Rd · Warren, NJ', '100-120 Cherry Hill Rd · Parsippany, NJ',
+    '50 Sussex Ave · Newark, NJ', '10 E Westfield Ave · Roselle Park, NJ', '8711 Church Hill Rd · North Bergen, NJ',
+    'Pearl Pointe · Burlington, NJ', 'The River Club · Bogota, NJ', '600 Harbor Blvd · Weehawken, NJ',
+    '800 Harbor Blvd · Weehawken, NJ', '555 1st St · Harrison, NJ', '29 Harris Pl · Paterson, NJ',
+    'Park Ridge Apartments · Park Ridge, NJ', 'Vinty Building · Cinnaminson, NJ', 'Tarrytown, NY',
+    'Weehawken, NJ', 'Linden, NJ',
+  ],
+  Industrial: [
+    '3275 Route 206 · Mansfield Township, NJ', '134 Neelytown Rd · Montgomery, NY', '25 Enterprise Ave N · Secaucus, NJ',
+    '2900 Woodbridge Ave · Edison, NJ', '580 Port Carteret Dr · Carteret, NJ',
+  ],
+  Commercial: ['1 South Burnett St · East Orange, NJ', 'Ledgewood Commons · Roxbury, NJ'],
+  'Mixed-Use': ['101 Grove St · Jersey City, NJ', '2-16 Spring St · Newark, NJ', 'Meridia Transit Plaza · Dover, NJ'],
+}
 
 export const process = [
   {
@@ -65,12 +220,12 @@ export const process = [
   {
     n: '02',
     title: 'Engineer & quote',
-    desc: 'Our in-house design team produces hydraulic calculations and a fixed, line-itemed proposal. No mystery pricing.',
+    desc: 'Our in-house design team produces custom designs, shop drawings and hydraulic calculations — with a clear, line-itemed proposal.',
   },
   {
     n: '03',
     title: 'Install or service',
-    desc: 'Field crews execute to the drawing — nights and phased work available so your operation never stops.',
+    desc: 'Field crews execute to the drawing with seamless installation that minimizes disruption to your operation.',
   },
   {
     n: '04',
@@ -98,139 +253,7 @@ export const faqs = [
   },
   {
     q: 'Do you handle emergencies?',
-    a: 'Yes — leaks, freeze damage, impaired systems, failed heads. The line at (973) 817-8114 is answered 24/7, every day of the year, and we manage impairment paperwork with your fire official.',
-  },
-]
-
-export const trustBadges = [
-  { label: 'NJ Licensed', detail: 'DFS Permit #P01570' },
-  { label: 'NICET Certified', detail: 'Certified technicians' },
-  { label: 'NFPA Compliant', detail: 'NFPA 13 & 25 standards' },
-  { label: 'Fully Insured', detail: 'Licensed, bonded & insured' },
-]
-
-export const stats = [
-  { value: '30+', label: 'Years of leadership' },
-  { value: '2,638', label: 'Heads in one flagship install' },
-  { value: '24/7', label: 'Emergency response' },
-  { value: '4', label: 'Property types served' },
-]
-
-export const services = [
-  {
-    slug: 'installation',
-    icon: 'install',
-    title: 'Fire Sprinkler Installation',
-    tagline: 'From bare pipe to certified system',
-    desc: 'Complete design-build installation for residential, commercial, industrial and mixed-use properties. Our in-house design team engineers every system to NFPA 13 and New Jersey Uniform Construction Code requirements.',
-    features: [
-      'Residential, commercial & industrial systems',
-      'Wet, dry and pre-action configurations',
-      'NFPA 13 & NJ UCC compliant engineering',
-      'Coordinated shop drawings and permits',
-    ],
-  },
-  {
-    slug: 'service-repairs',
-    icon: 'wrench',
-    title: '24/7 Service & Repairs',
-    tagline: 'Emergencies don’t keep office hours',
-    desc: 'Round-the-clock emergency response for leaks, freeze damage, impaired systems and failed components. We restore protection fast and document everything for your insurer and fire official.',
-    features: [
-      '24/7 emergency dispatch',
-      'Leak & freeze damage response',
-      'Head, valve & pipe replacement',
-      'Impairment management & re-certification',
-    ],
-  },
-  {
-    slug: 'inspections',
-    icon: 'clipboard',
-    title: 'Inspections & Compliance',
-    tagline: 'NFPA 25 compliance, handled end-to-end',
-    desc: 'New Jersey law requires sprinkler systems to be inspected on an NFPA 25 schedule — and reports filed with your local fire official within five business days. We run the whole cycle so you never miss a deadline.',
-    features: [
-      'Quarterly, annual & 5-year NFPA 25 inspections',
-      'State-form reporting, filed for you',
-      'Deficiency correction & re-inspection',
-      'Compliance calendar & reminders',
-    ],
-  },
-  {
-    slug: 'design',
-    icon: 'blueprint',
-    title: 'Custom Design & Shop Drawings',
-    tagline: 'An in-house engineering team, not a subcontractor',
-    desc: 'Hydraulically calculated designs, coordinated shop drawings and as-builts produced by our own design department — faster approvals, fewer field conflicts, cleaner installs.',
-    features: [
-      'Hydraulic calculations & placarding (NJ Form F380)',
-      'BIM / CAD coordinated shop drawings',
-      'Value engineering on existing designs',
-      'Permit-ready submittal packages',
-    ],
-  },
-]
-
-export const caseStudies = [
-  {
-    slug: 'singh-tower',
-    sample: false,
-    sector: 'Residential High-Rise',
-    title: '301 West Side Avenue, Jersey City',
-    summary:
-      'Full wet-system design and installation for a 218,028 sq ft residential tower — 2,638 sprinkler heads protecting 202 units and shared amenity spaces.',
-    metrics: [
-      { value: '218,028', label: 'sq ft protected' },
-      { value: '2,638', label: 'sprinkler heads' },
-      { value: '202', label: 'residential units' },
-    ],
-    body: 'Our design team produced fully coordinated shop drawings and hydraulic calculations for all residential floors, amenity levels and parking, then our field crews installed and commissioned the complete system on schedule. The project showcases the full lifecycle we deliver: design, permitting, installation, testing and handover documentation.',
-    accent: '#e2543a',
-  },
-  {
-    slug: 'logistics-warehouse',
-    sample: true,
-    sector: 'Industrial / Warehouse',
-    title: 'Port-Area Distribution Center',
-    summary:
-      'ESFR sprinkler retrofit for a high-piled storage warehouse — protection upgraded without pausing operations.',
-    metrics: [
-      { value: '96,000', label: 'sq ft retrofitted' },
-      { value: '0', label: 'days of downtime' },
-      { value: '5-yr', label: 'ITM contract signed' },
-    ],
-    body: 'Sample case study — replace with a real project. Demonstrates the layout: phased night-shift installation, rack-storage hydraulics, and a recurring inspection contract after handover.',
-    accent: '#2b6cb0',
-  },
-  {
-    slug: 'mixed-use-newark',
-    sample: true,
-    sector: 'Mixed-Use',
-    title: 'Downtown Newark Mixed-Use Development',
-    summary:
-      'Ground-floor retail, four residential floors, one system — designed and installed to keep every occupancy compliant.',
-    metrics: [
-      { value: '5', label: 'floors protected' },
-      { value: '38', label: 'retail & residential spaces' },
-      { value: '100%', label: 'first-pass inspection' },
-    ],
-    body: 'Sample case study — replace with a real project. Demonstrates multi-occupancy zoning, separate control valves per use group, and coordination with alarm contractors.',
-    accent: '#b7791f',
-  },
-  {
-    slug: 'restaurant-repair',
-    sample: true,
-    sector: 'Commercial / Emergency',
-    title: 'Overnight Freeze-Damage Response',
-    summary:
-      'A burst pipe at 2 AM. System drained, repaired, refilled and re-certified before the lunch rush.',
-    metrics: [
-      { value: '2 AM', label: 'emergency call' },
-      { value: '9 hrs', label: 'to full restoration' },
-      { value: '24/7', label: 'line that answered' },
-    ],
-    body: 'Sample case study — replace with a real project. Demonstrates the emergency-response story format: impairment management, fire-watch guidance, and same-day re-certification.',
-    accent: '#6b46c1',
+    a: 'Yes — leaks, burst pipes, impaired systems, failed components. The line at (973) 817-8114 is answered 24/7, and we offer emergency repairs that restore your fire protection system with minimal downtime.',
   },
 ]
 
@@ -309,14 +332,51 @@ export const blogPosts = [
   },
 ]
 
+// Real core values from newarkfiresprinkler.com/about
+export const values = [
+  {
+    icon: 'shield',
+    title: 'Safety First',
+    desc: 'We prioritize the protection of lives and property by delivering fire safety solutions that meet the highest standards of reliability and compliance.',
+  },
+  {
+    icon: 'check',
+    title: 'Excellence in Service',
+    desc: 'Our commitment to quality and professionalism drives us to exceed expectations in every project, from design to installation and maintenance.',
+  },
+  {
+    icon: 'blueprint',
+    title: 'Innovation and Expertise',
+    desc: 'We embrace cutting-edge technology and leverage our certified team’s expertise to create tailored fire protection systems for every client’s unique needs.',
+  },
+  {
+    icon: 'chat',
+    title: 'Trust and Accountability',
+    desc: 'We build lasting relationships through honest communication, transparent processes, and unwavering dedication to our clients’ safety and satisfaction.',
+  },
+]
+
+// Full real roster from newarkfiresprinkler.com/about
 export const team = [
-  { name: 'Luis Ferreira', role: 'President' },
-  { name: 'Skender Perolli', role: 'Managing Director' },
-  { name: 'Stacy Sanchez', role: 'Bid Coordinator' },
-  { name: 'Ruben Rodrigues', role: 'Office Manager' },
-  { name: 'Keith Dolan', role: 'Business Development' },
-  { name: 'Damas Paul', role: 'Design Manager / QC' },
-  { name: 'Pedro Bencosme', role: 'Design Asst. Manager' },
+  { name: 'Luis Ferreira', role: 'President', dept: 'Administration' },
+  { name: 'Skender Perolli', role: 'Managing Director', dept: 'Administration' },
+  { name: 'Stacy Sanchez', role: 'Bid Coordinator', dept: 'Administration' },
+  { name: 'Ruben Rodrigues', role: 'Office Manager', dept: 'Administration' },
+  { name: 'Keith Dolan', role: 'Business Development', dept: 'Administration' },
+  { name: 'Bryan Jaramillo', role: 'Residential Manager', dept: 'Residential & Commercial' },
+  { name: 'Jordan Feliz', role: 'Estimator', dept: 'Residential & Commercial' },
+  { name: 'Yandri Torres', role: 'Estimator', dept: 'Residential & Commercial' },
+  { name: 'Armando Gonzalez', role: 'Industrial Manager', dept: 'Industrial' },
+  { name: 'Anthony Paltan', role: 'Industrial Designer', dept: 'Industrial' },
+  { name: 'Kevin Romero', role: 'Estimator & Industrial Designer', dept: 'Industrial' },
+  { name: 'Alex Mirenda', role: 'Service & Inspections Manager', dept: 'Service & Inspections' },
+  { name: 'Matthew Roman', role: 'Service Coordinator', dept: 'Service & Inspections' },
+  { name: 'Tom Tornatore', role: 'Sales Representative', dept: 'Service & Inspections' },
+  { name: 'Philip Monesmith', role: 'Sales Representative', dept: 'Service & Inspections' },
+  { name: 'Jesenia Serrano', role: 'Coordinator', dept: 'Service & Inspections' },
+  { name: 'Aimme Balbuena', role: 'Coordinator', dept: 'Service & Inspections' },
+  { name: 'Damas Paul', role: 'Manager / Quality Control', dept: 'Design' },
+  { name: 'Pedro Bencosme', role: 'Assistant Manager', dept: 'Design' },
 ]
 
 export const testimonial = {
@@ -326,10 +386,11 @@ export const testimonial = {
   source: 'Verified customer review',
 }
 
+// Segment copy from newarkfiresprinkler.com/services/installation
 export const industries = [
-  { name: 'Residential', desc: 'Single-family, multi-family and high-rise living — systems that protect people first.' },
-  { name: 'Commercial', desc: 'Offices, retail and hospitality — code-compliant protection with minimal disruption.' },
-  { name: 'Industrial', desc: 'Warehouses, factories and high-hazard storage — ESFR and special-hazard design.' },
+  { name: 'Residential', desc: 'Protect your family and home with expertly designed systems that activate instantly to stop fire spread.' },
+  { name: 'Commercial', desc: 'Safeguard your business and employees with customized sprinkler solutions for offices, retail spaces, and restaurants.' },
+  { name: 'Industrial', desc: 'Ensure safety in high-risk areas like factories and warehouses with advanced fire suppression technology.' },
   { name: 'Mixed-Use', desc: 'Multi-occupancy buildings — zoned systems engineered for every use group under one roof.' },
 ]
 

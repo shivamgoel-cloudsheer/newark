@@ -28,8 +28,8 @@ export default function HomeEmber() {
               <span className="text-[#c8102e]">infrastructure.</span>
             </h1>
             <p className="animate-rise mt-7 text-lg text-[#5b5f68] max-w-lg leading-relaxed" style={{ animationDelay: '180ms' }}>
-              Design, installation, inspection and 24/7 emergency service for fire sprinkler
-              systems — delivered by one accountable, in-house team across New Jersey.
+              {company.hero} — installation, 24/7 service, inspections and custom design for
+              residential, commercial and industrial properties across New Jersey.
             </p>
             <div className="animate-rise mt-9 flex flex-wrap gap-4" style={{ animationDelay: '260ms' }}>
               <Link to="/ember/contact" className={t.btnPrimary}>

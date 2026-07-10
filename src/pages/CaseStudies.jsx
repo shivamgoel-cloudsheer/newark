@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom'
 import { useTheme } from '../theme.jsx'
-import { caseStudies } from '../data/content.js'
+import { caseStudies, portfolio } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
-import { Section, CTABand, CaseStudyCard, caseStudyImage } from '../components/Blocks.jsx'
+import { Section, CTABand, CaseStudyCard, caseStudyImage, SectionHeading } from '../components/Blocks.jsx'
 import { PageHero } from './Services.jsx'
 
 export default function CaseStudies() {
@@ -50,11 +50,42 @@ export default function CaseStudies() {
       </Section>
 
       {/* the rest */}
-      <Section className="pb-24">
+      <Section className="pb-20">
         <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-6">
           {rest.map((cs, i) => (
             <CaseStudyCard key={cs.slug} cs={cs} delay={i * 90} />
           ))}
+        </div>
+      </Section>
+
+      {/* full portfolio — real project list */}
+      <Section className="pb-24">
+        <div className="max-w-7xl mx-auto px-5">
+          <SectionHeading
+            kicker="Full portfolio"
+            title="40+ projects across NJ & NY"
+            sub="Every address below is a building our team protects — from senior apartments to port-side logistics."
+          />
+          <div className="grid md:grid-cols-2 gap-6">
+            {Object.entries(portfolio).map(([sector, projects]) => (
+              <div key={sector} className={`${t.card} p-7 reveal`}>
+                <div className="flex items-center justify-between mb-5">
+                  <h3 className={`${t.display} text-xl`}>{sector}</h3>
+                  <span className={t.badge}>{projects.length} projects</span>
+                </div>
+                <ul className={`grid ${projects.length > 8 ? 'sm:grid-cols-2' : ''} gap-x-6 gap-y-2`}>
+                  {projects.map((p) => (
+                    <li key={p} className={`flex items-start gap-2 text-[13px] leading-snug ${t.muted}`}>
+                      <span className={`${t.accentText} mt-0.5 shrink-0`}>
+                        <Icon name="building" size={13} />
+                      </span>
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 

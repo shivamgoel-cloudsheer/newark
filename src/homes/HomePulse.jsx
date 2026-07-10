@@ -30,8 +30,7 @@ export default function HomePulse() {
             </span>
           </h1>
           <p className="animate-rise mt-7 text-lg md:text-xl text-[#8b96a5] max-w-2xl mx-auto leading-relaxed" style={{ animationDelay: '170ms' }}>
-            Design, installation, inspection and emergency response for fire sprinkler
-            systems — engineered in-house, delivered across New Jersey.
+            {company.hero} — engineered by our in-house design team, delivered across New Jersey.
           </p>
           <div className="animate-rise mt-10 flex flex-wrap justify-center gap-4" style={{ animationDelay: '250ms' }}>
             <Link to="/pulse/contact" className={`${t.btnPrimary} text-base`}>

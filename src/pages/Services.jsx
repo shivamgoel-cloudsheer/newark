@@ -18,8 +18,8 @@ export default function Services() {
     <>
       <PageHero
         kicker="Services"
-        title="The full lifecycle of your sprinkler system"
-        sub="Design, installation, inspection, and 24/7 emergency service — one licensed team accountable for all of it."
+        title="Comprehensive fire protection you can trust"
+        sub="We offer a full range of fire protection services designed to safeguard your property, ensure compliance, and provide peace of mind — custom solutions, certified expertise, 24/7 peace of mind."
       />
 
       <Section className="py-20">
