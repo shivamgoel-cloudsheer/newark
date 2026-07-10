@@ -13,7 +13,15 @@ const DOUSE_MS = 1300
 const ALARM_MS = 1600
 const OCC_STEP_MS = 340
 const TIME_LIMIT = 60000
-const RADIUS = 2.6
+const RADIUS = 2.0
+
+// brand flame logo drawn on placed sprinkler heads
+const logoImg = new Image()
+logoImg.src =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#e5062d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.5 3-1.5 4.5-2.8 6.2A6.5 6.5 0 1 0 18.5 14c0-3.5-2.7-4.6-3.5-7.5-1 .8-1.5 2-1.3 3.5C12.2 8.5 11.5 5.5 12 3z"/></svg>',
+  )
 
 const LEVELS = {
   office: {
@@ -88,26 +96,42 @@ function parseLevel(def) {
   const cols = def.map[0].length
   const cells = []
   const occupants = []
-  let ignition = null
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       const ch = def.map[y][x]
       const type = ch === '#' ? 'wall' : ch === 'F' ? 'fuel' : ch === 'E' ? 'exit' : 'floor'
       cells.push({ x, y, type, state: 'intact', burnStart: 0, douse: 0, wet: 0 })
       if (ch === 'O') occupants.push({ x, y, state: 'waiting', rx: x, ry: y })
-      if (ch === 'I') ignition = { x, y }
     }
   }
-  return { rows, cols, cells, occupants, ignition }
+  return { rows, cols, cells, occupants }
 }
 
 function makeState(levelKey, sprinklers, seed) {
   const g = parseLevel(LEVELS[levelKey])
+  const rng = mulberry32(seed)
+  // fire starts at 2-3 RANDOM spots — never revealed in advance, never on top
+  // of an occupant, spread out from each other
+  const candidates = g.cells.filter(
+    (c) =>
+      (c.type === 'floor' || c.type === 'fuel') &&
+      !g.occupants.some((o) => Math.hypot(o.x - c.x, o.y - c.y) < 2),
+  )
+  const count = rng() < 0.35 ? 3 : 2
+  const ignitions = []
+  let guard = 0
+  while (ignitions.length < count && guard++ < 200) {
+    const pick = candidates[Math.floor(rng() * candidates.length)]
+    if (ignitions.every((ig) => Math.hypot(ig.x - pick.x, ig.y - pick.y) >= 4)) {
+      ignitions.push({ x: pick.x, y: pick.y })
+    }
+  }
   return {
     ...g,
     levelKey,
+    ignitions,
     sprinklers: sprinklers.map((s) => ({ ...s, active: false })),
-    rng: mulberry32(seed),
+    rng,
     time: 0,
     spreadAcc: 0,
     occAcc: 0,
@@ -157,10 +181,12 @@ function step(s, dt) {
   if (s.finished) return
   s.time += dt
   if (s.time === dt) {
-    const c = at(s, s.ignition.x, s.ignition.y)
-    if (c.state === 'intact') {
-      c.state = 'burning'
-      c.burnStart = s.time
+    for (const ig of s.ignitions) {
+      const c = at(s, ig.x, ig.y)
+      if (c.state === 'intact') {
+        c.state = 'burning'
+        c.burnStart = s.time
+      }
     }
   }
 
@@ -255,7 +281,8 @@ function runHeadless(levelKey, seed) {
   return results(s)
 }
 
-// greedy auto-placement: cover fuel + ignition with spaced heads
+// greedy auto-placement: maximize burnable coverage with spaced heads
+// (ignition points are unknown at plan time — cover the fuel)
 function autoPlace(levelKey) {
   const g = parseLevel(LEVELS[levelKey])
   const budget = LEVELS[levelKey].budget
@@ -266,7 +293,6 @@ function autoPlace(levelKey) {
       if (dist(c, o) > RADIUS) continue
       if (o.type === 'fuel') v += 3
       else if (o.type === 'floor') v += 1
-      if (o.x === g.ignition.x && o.y === g.ignition.y) v += 14
     }
     return v
   }
@@ -553,7 +579,7 @@ export default function FireGame() {
       ctx.fill()
     }
 
-    // sprinkler heads
+    // sprinkler heads — brand logo badge instead of a plus sign
     for (const sp of list) {
       const cx = sp.x * CELL + CELL / 2
       const cy = sp.y * CELL + CELL / 2
@@ -563,18 +589,19 @@ export default function FireGame() {
         ctx.arc(cx, cy, RADIUS * CELL, 0, Math.PI * 2)
         ctx.fill()
       }
-      ctx.fillStyle = sp.active ? '#4da3ff' : '#a9bed4'
+      // badge
+      ctx.fillStyle = '#fff7f0'
       ctx.beginPath()
-      ctx.arc(cx, cy, 6.5, 0, Math.PI * 2)
+      ctx.arc(cx, cy, 9, 0, Math.PI * 2)
       ctx.fill()
-      ctx.strokeStyle = '#0a0c10'
-      ctx.lineWidth = 1.6
+      ctx.strokeStyle = sp.active ? '#4da3ff' : 'rgba(10,12,16,0.55)'
+      ctx.lineWidth = sp.active ? 2.4 : 1.4
       ctx.beginPath()
-      ctx.moveTo(cx - 4, cy)
-      ctx.lineTo(cx + 4, cy)
-      ctx.moveTo(cx, cy - 4)
-      ctx.lineTo(cx, cy + 4)
+      ctx.arc(cx, cy, 9, 0, Math.PI * 2)
       ctx.stroke()
+      if (logoImg.complete && logoImg.naturalWidth) {
+        ctx.drawImage(logoImg, cx - 6, cy - 6, 12, 12)
+      }
     }
 
     // activation pings
@@ -621,23 +648,6 @@ export default function FireGame() {
       ctx.arc(cx, cy - 4 + bob, 4.4, 0, Math.PI * 2)
       ctx.fill()
       ctx.fillRect(cx - 3.2, cy + bob, 6.4, 8.5)
-    }
-
-    // ignition marker (plan)
-    if (phase === 'plan') {
-      const ig = g.ignition
-      const px = ig.x * CELL
-      const py = ig.y * CELL
-      const pulse = 0.5 + 0.5 * Math.sin(now / 300)
-      ctx.strokeStyle = `rgba(255,122,41,${0.5 + pulse * 0.5})`
-      ctx.lineWidth = 2
-      ctx.setLineDash([4, 4])
-      rr(ctx, px + 3, py + 3, CELL - 6, CELL - 6, 5)
-      ctx.stroke()
-      ctx.setLineDash([])
-      ctx.font = '15px serif'
-      ctx.textAlign = 'center'
-      ctx.fillText('🔥', px + CELL / 2, py + CELL / 2 + 5)
     }
 
     // vignette
@@ -784,7 +794,7 @@ export default function FireGame() {
         />
         {phase === 'plan' && (
           <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur text-white text-[11px] md:text-sm font-semibold px-4 py-2 rounded-full pointer-events-none whitespace-nowrap border border-white/15">
-            🧯 Tap the floor to place {level.budget} heads — the 🔥 marks ignition
+            🧯 Place {level.budget} heads — fire can break out anywhere, in more than one spot
           </div>
         )}
         {phase === 'done' && outcome && <ResultOverlay outcome={outcome} onReplay={() => reset(true)} onReplan={() => reset(false)} t={t} />}
