@@ -18,6 +18,90 @@ export const company = {
   portal: 'https://payments.coretechsolutions.app/',
 }
 
+const u = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
+
+export const images = {
+  heroIndustrial: u('photo-1504328345606-18bbc8c9d7d1', 1600),
+  heroCorporate: u('photo-1486406146926-c627a92ad1ab', 1600),
+  engineer: u('photo-1581094794329-c8112a89af12'),
+  engineerAtWork: u('photo-1581092160562-40aa08e78837'),
+  engineerWoman: u('photo-1581091226825-a6a2a5aee158'),
+  warehouse: u('photo-1553413077-190dd305871c'),
+  warehouseForklift: u('photo-1586528116311-ad8dd3c8310d'),
+  buildingWhite: u('photo-1487958449943-2429e8be8625'),
+  buildingGlass: u('photo-1449157291145-7efd050a4d0e'),
+  cityDark: u('photo-1477959858617-67f85cf4f1df', 1800),
+  construction: u('photo-1541888946425-d81bb19240f5'),
+  blueprint: u('photo-1503387762-592deb58ef4e'),
+  planningDesk: u('photo-1454165804606-c3d57bc86b40'),
+  team: u('photo-1521737604893-d14cc237f11d'),
+  meeting: u('photo-1556761175-b413da4baf72'),
+  interior: u('photo-1497366216548-37526070297c'),
+  handshake: u('photo-1560518883-ce09059eeffa'),
+  industrialWorker: u('photo-1581094271901-8022df4466f9'),
+  firefighter: u('photo-1523419409543-a5e549c1faa8'),
+  skyline: u('photo-1494522855154-9297ac14b55f', 1800),
+}
+
+export const marqueeItems = [
+  'NJ DFS Permit #P01570',
+  'NICET-Certified Technicians',
+  'NFPA 13 Design',
+  'NFPA 25 Inspections',
+  'OSHA Compliant',
+  'ICC Standards',
+  'Licensed · Bonded · Insured',
+  '24/7 Emergency Dispatch',
+  'In-House Engineering',
+  'Serving All of New Jersey',
+]
+
+export const process = [
+  {
+    n: '01',
+    title: 'Survey & assess',
+    desc: 'A NICET-certified tech walks your building, reviews existing systems and pulls the code requirements for your occupancy.',
+  },
+  {
+    n: '02',
+    title: 'Engineer & quote',
+    desc: 'Our in-house design team produces hydraulic calculations and a fixed, line-itemed proposal. No mystery pricing.',
+  },
+  {
+    n: '03',
+    title: 'Install or service',
+    desc: 'Field crews execute to the drawing — nights and phased work available so your operation never stops.',
+  },
+  {
+    n: '04',
+    title: 'Certify & file',
+    desc: 'We test, commission and file the state forms with your fire official within NJ’s 5-business-day deadline. You get the paper trail.',
+  },
+]
+
+export const faqs = [
+  {
+    q: 'How often does New Jersey require sprinkler inspections?',
+    a: 'On the NFPA 25 cycle: gauges and valves weekly/monthly, waterflow alarm devices quarterly, a full system inspection annually, and internal pipe inspections every 5 years. Your local fire official can require more depending on occupancy.',
+  },
+  {
+    q: 'What happens if I skip an inspection?',
+    a: 'NJ fire code penalties run $500–$5,000 per violation per day, up to $25,000 for serious life-safety violations — plus possible insurance consequences. An inspection contract costs a fraction of one fine.',
+  },
+  {
+    q: 'Can any contractor inspect my sprinkler system?',
+    a: 'No. Since 2003 it has been illegal in New Jersey to install, service or inspect fire protection equipment without a Division of Fire Safety business permit. Ours is #P01570 (Class C2 — Fire Sprinkler Systems), verifiable on the state’s public list.',
+  },
+  {
+    q: 'Who files the inspection report?',
+    a: 'We do. New Jersey requires records forwarded to your local fire official within five business days of the inspection — filing the state forms is part of every inspection we perform, and you get copies for your records.',
+  },
+  {
+    q: 'Do you handle emergencies?',
+    a: 'Yes — leaks, freeze damage, impaired systems, failed heads. The line at (973) 817-8114 is answered 24/7, every day of the year, and we manage impairment paperwork with your fire official.',
+  },
+]
+
 export const trustBadges = [
   { label: 'NJ Licensed', detail: 'DFS Permit #P01570' },
   { label: 'NICET Certified', detail: 'Certified technicians' },
@@ -252,23 +336,23 @@ export const industries = [
 export const variants = [
   {
     id: 'ember',
-    name: 'Concept A — Ember',
-    vibe: 'Bold & Industrial',
-    desc: 'High-contrast charcoal and flame red. Condensed display type, sharp edges, big stats. Feels like a crew that shows up at 2 AM.',
-    swatches: ['#16181d', '#d7263d', '#f5f5f2', '#ffb703'],
+    name: 'Concept A — Forge',
+    vibe: 'Editorial Industrial',
+    desc: 'Warm paper, deep ink, precision red. Magazine-grade typography, real photography, numbered service editorial. Feels like an engineering firm’s annual report.',
+    swatches: ['#14161a', '#c8102e', '#f7f5f2', '#b45309'],
   },
   {
     id: 'aegis',
-    name: 'Concept B — Aegis',
-    vibe: 'Corporate Trust',
-    desc: 'Clean, airy, navy-and-white with compliance front and center. License number in the header. Built to win property-manager RFPs.',
-    swatches: ['#0f2a43', '#c1121f', '#f7f9fc', '#3d7dca'],
+    name: 'Concept B — Meridian',
+    vibe: 'Consultancy Trust',
+    desc: 'Cream and deep navy with serif display type. Compliance calendar in the hero, license in the header, FAQ and process timeline. Built to win property-manager RFPs.',
+    swatches: ['#0c2340', '#b3202c', '#faf8f4', '#8c6b2f'],
   },
   {
     id: 'pulse',
-    name: 'Concept C — Pulse',
-    vibe: 'Dark & Modern',
-    desc: 'Deep-space dark mode with ember-orange glow, glass cards and motion. A fire protection company that feels like a tech company.',
-    swatches: ['#0b0f14', '#ff6b35', '#141b23', '#ffd166'],
+    name: 'Concept C — Sentinel',
+    vibe: 'Precision Dark',
+    desc: 'Linear-grade dark mode: grid lines, aurora glow, bento feature grid, spotlight cards and a live system-status hero. Fire protection that feels like deep tech.',
+    swatches: ['#0a0c10', '#ff5c1a', '#10141b', '#ffd166'],
   },
 ]

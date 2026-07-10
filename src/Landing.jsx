@@ -75,20 +75,27 @@ function MiniPreview({ variant }) {
   if (variant.id === 'ember')
     return (
       <div className="h-40 p-3" style={{ background: paper }}>
-        <div className="h-5 mb-2 flex items-center px-2 gap-1" style={{ background: bg }}>
-          <span className="w-2 h-2" style={{ background: accent }} />
-          <span className="w-10 h-1.5 bg-white/60" />
-          <span className="ml-auto w-8 h-2.5" style={{ background: accent }} />
+        <div className="h-4 mb-3 flex items-center gap-1.5 px-1">
+          <span className="w-2.5 h-2.5 rounded" style={{ background: accent }} />
+          <span className="w-12 h-1.5 rounded" style={{ background: bg, opacity: 0.85 }} />
+          <span className="ml-auto w-9 h-3 rounded-md" style={{ background: bg }} />
         </div>
-        <div className="w-3/4 h-4 mb-1.5" style={{ background: bg }} />
-        <div className="w-1/2 h-4 mb-2" style={{ background: accent }} />
-        <div className="w-1/3 h-2 mb-3" style={{ background: `${bg}55` }} />
-        <div className="flex gap-1.5">
-          {[0, 1, 2].map((k) => (
-            <div key={k} className="flex-1 h-12 border-2" style={{ background: '#fff', borderColor: bg, boxShadow: `3px 3px 0 ${bg}` }}>
-              <div className="w-4 h-1.5 mt-2 ml-2" style={{ background: k === 1 ? gold : accent }} />
+        <div className="flex gap-3">
+          <div className="flex-1 pt-1">
+            <div className="w-full h-3.5 rounded-sm mb-1.5" style={{ background: bg }} />
+            <div className="w-3/4 h-3.5 rounded-sm mb-1.5" style={{ background: bg }} />
+            <div className="w-1/2 h-3.5 rounded-sm mb-2.5" style={{ background: accent }} />
+            <div className="w-4/5 h-1.5 rounded bg-black/15 mb-1" />
+            <div className="w-3/5 h-1.5 rounded bg-black/15 mb-3" />
+            <div className="w-12 h-4 rounded-md" style={{ background: accent }} />
+          </div>
+          <div className="w-2/5 h-[104px] rounded-lg overflow-hidden relative" style={{ background: `linear-gradient(150deg, ${bg}, #3a3f47)` }}>
+            <div className="absolute bottom-2 left-2 w-10 h-1.5 rounded bg-white/60" />
+            <div className="absolute bottom-5 left-2 w-6 h-1.5 rounded bg-white/30" />
+            <div className="absolute -bottom-3 -left-4 w-14 h-9 rounded-md" style={{ background: bg, boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
+              <span className="block w-2 h-2 rounded-full mt-2 ml-2" style={{ background: accent }} />
             </div>
-          ))}
+          </div>
         </div>
       </div>
     )

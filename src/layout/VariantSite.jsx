@@ -1,8 +1,9 @@
-import { useParams, useLocation, Link, NavLink, Routes, Route, Navigate } from 'react-router-dom'
+import { useParams, Link, NavLink, Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { ThemeProvider, themes } from '../theme.jsx'
 import { company } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
+import { useScrolled } from '../components/hooks.js'
 import ChatBot from '../components/ChatBot.jsx'
 import HomeEmber from '../homes/HomeEmber.jsx'
 import HomeAegis from '../homes/HomeAegis.jsx'
@@ -21,7 +22,7 @@ const NAV = [
   { to: 'case-studies', label: 'Case Studies' },
   { to: 'blog', label: 'Blog' },
   { to: 'about', label: 'About' },
-  { to: 'game', label: 'Fire Drill Game' },
+  { to: 'game', label: 'Fire Drill' },
   { to: 'contact', label: 'Contact' },
 ]
 
@@ -62,19 +63,20 @@ function Header() {
   const { variantId } = useParams()
   const t = themes[variantId]
   const [open, setOpen] = useState(false)
+  const scrolled = useScrolled()
   const base = `/${variantId}`
 
   const linkCls = ({ isActive }) => {
     if (variantId === 'ember')
-      return `font-condensed uppercase tracking-wider text-lg px-1 border-b-2 transition-colors ${
-        isActive ? 'border-[#d7263d] text-white' : 'border-transparent text-white/70 hover:text-white'
+      return `text-sm font-semibold px-1 pb-0.5 border-b-2 transition-colors ${
+        isActive ? 'border-[#c8102e] text-[#14161a]' : 'border-transparent text-[#5b5f68] hover:text-[#14161a]'
       }`
     if (variantId === 'aegis')
       return `text-sm font-semibold px-1 transition-colors ${
-        isActive ? 'text-[#c1121f]' : 'text-[#182635]/80 hover:text-[#0f2a43]'
+        isActive ? 'text-[#b3202c]' : 'text-[#1d2a3a]/75 hover:text-[#0c2340]'
       }`
     return `text-sm font-medium px-3 py-1.5 rounded-full transition-all ${
-      isActive ? 'bg-[#ff6b35]/15 text-[#ff9f1c]' : 'text-slate-300 hover:text-white hover:bg-white/5'
+      isActive ? 'bg-[#ff5c1a]/15 text-[#ff9f1c]' : 'text-[#8b96a5] hover:text-white hover:bg-white/5'
     }`
   }
 
@@ -83,20 +85,28 @@ function Header() {
       <span
         className={
           variantId === 'ember'
-            ? 'inline-flex items-center justify-center w-10 h-10 bg-[#d7263d] text-white border-2 border-white/20'
+            ? 'inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c8102e] text-white'
             : variantId === 'aegis'
-              ? 'inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#c1121f] text-white'
-              : 'inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6b35] to-[#ff9f1c] text-[#0b0f14]'
+              ? 'inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#0c2340] text-white'
+              : 'inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#ff5c1a] to-[#ff9f1c] text-[#0a0c10]'
         }
       >
-        <Icon name="flame" size={22} />
+        <Icon name="flame" size={21} />
       </span>
       <span className="leading-tight">
-        <span className={`block font-bold ${variantId === 'ember' ? 'font-condensed uppercase text-xl tracking-wide text-white' : variantId === 'aegis' ? 'text-[#0f2a43]' : 'text-white'}`}>
+        <span
+          className={`block font-bold tracking-tight ${
+            variantId === 'ember'
+              ? 'font-archivo text-[#14161a]'
+              : variantId === 'aegis'
+                ? 'font-fraunces text-lg text-[#0c2340]'
+                : 'font-grotesk text-white'
+          }`}
+        >
           Newark Fire Sprinkler
         </span>
-        <span className={`block text-[11px] ${variantId === 'ember' ? 'text-[#ffb703]' : variantId === 'aegis' ? 'text-slate-500' : 'text-slate-400'}`}>
-          {company.permit}
+        <span className={`block text-[10.5px] tracking-wide ${variantId === 'pulse' ? 'text-[#8b96a5]' : variantId === 'aegis' ? 'text-[#8c6b2f] font-semibold' : 'text-[#5b5f68]'}`}>
+          {company.permit} · New Jersey
         </span>
       </span>
     </Link>
@@ -105,60 +115,68 @@ function Header() {
   if (variantId === 'aegis')
     return (
       <header className="sticky top-0 z-40">
-        <div className="bg-[#0f2a43] text-white text-xs">
-          <div className="max-w-6xl mx-auto px-5 py-1.5 flex items-center gap-4">
-            <span className="hidden sm:inline">{company.permit} · {company.permitClass}</span>
-            <span className="hidden md:inline text-white/60">{company.serviceArea}</span>
-            <a href={company.phoneHref} className="ml-auto font-bold inline-flex items-center gap-1.5">
-              <Icon name="phone" size={13} /> 24/7 Emergency: {company.phone}
+        <div className="bg-[#0c2340] text-white text-xs">
+          <div className="max-w-7xl mx-auto px-5 py-2 flex items-center gap-4">
+            <span className="hidden sm:inline text-white/75">{company.permitClass} · Verifiable on the NJ DFS registry</span>
+            <a href={company.phoneHref} className="ml-auto font-bold inline-flex items-center gap-1.5 hover:text-[#ffd166] transition-colors">
+              <Icon name="phone" size={12} /> 24/7 Emergency: {company.phone}
             </a>
           </div>
         </div>
-        <div className="bg-white/90 backdrop-blur border-b border-slate-200">
-          <div className="max-w-6xl mx-auto px-5 py-3 flex items-center gap-6">
+        <div className={`transition-all ${scrolled ? 'bg-[#faf8f4]/95 backdrop-blur-xl shadow-[0_8px_30px_-14px_rgba(12,35,64,0.25)]' : 'bg-[#faf8f4]/80 backdrop-blur'} border-b border-[#0c2340]/8`}>
+          <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center gap-6">
             {Logo}
-            <nav className="hidden lg:flex items-center gap-5 ml-auto">
+            <nav className="hidden lg:flex items-center gap-6 ml-auto">
               {NAV.map((n) => (
                 <NavLink key={n.to} to={`${base}/${n.to}`} end={n.end} className={linkCls}>
                   {n.label}
                 </NavLink>
               ))}
-              <Link to={`${base}/contact`} className={t.btnPrimary + ' !px-5 !py-2.5 text-sm'}>
-                Request a Quote
+              <Link to={`${base}/contact`} className={t.btnPrimary + ' !px-6 !py-2.5 text-sm'}>
+                Request a quote
               </Link>
             </nav>
-            <MobileToggle open={open} setOpen={setOpen} dark={false} />
+            <MobileToggle open={open} setOpen={setOpen} cls="text-[#0c2340]" />
           </div>
-          {open && <MobileNav base={base} setOpen={setOpen} cls="bg-white border-t border-slate-200 text-[#0f2a43]" />}
+          {open && <MobileNav base={base} setOpen={setOpen} cls="bg-[#faf8f4] border-t border-[#0c2340]/10 text-[#0c2340]" />}
         </div>
       </header>
     )
 
   if (variantId === 'ember')
     return (
-      <header className="sticky top-0 z-40 bg-[#16181d] border-b-4 border-[#d7263d]">
-        <div className="max-w-6xl mx-auto px-5 py-3.5 flex items-center gap-6">
+      <header className={`sticky top-0 z-40 transition-all ${scrolled ? 'bg-[#f7f5f2]/95 backdrop-blur-xl shadow-[0_8px_30px_-16px_rgba(20,22,26,0.3)]' : 'bg-[#f7f5f2]'} border-b border-[#14161a]/8`}>
+        <div className="max-w-7xl mx-auto px-5 py-3.5 flex items-center gap-6">
           {Logo}
-          <nav className="hidden lg:flex items-center gap-5 ml-auto">
+          <nav className="hidden lg:flex items-center gap-6 ml-auto">
             {NAV.map((n) => (
               <NavLink key={n.to} to={`${base}/${n.to}`} end={n.end} className={linkCls}>
                 {n.label}
               </NavLink>
             ))}
-            <a href={company.phoneHref} className="inline-flex items-center gap-2 bg-[#ffb703] text-[#16181d] font-condensed uppercase tracking-wider text-lg px-5 py-2 border-2 border-white/10">
-              <Icon name="phone" size={17} /> {company.phone}
+            <a href={company.phoneHref} className="inline-flex items-center gap-2 font-archivo font-bold text-sm text-[#14161a]">
+              <span className="relative flex">
+                <span className="absolute inline-flex w-8 h-8 rounded-full bg-[#c8102e]/40 animate-pulse-ring" />
+                <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#c8102e] text-white">
+                  <Icon name="phone" size={14} />
+                </span>
+              </span>
+              {company.phone}
             </a>
+            <Link to={`${base}/contact`} className={t.btnSecondary + ' !px-5 !py-2.5 text-sm'}>
+              Get a quote
+            </Link>
           </nav>
-          <MobileToggle open={open} setOpen={setOpen} dark />
+          <MobileToggle open={open} setOpen={setOpen} cls="text-[#14161a]" />
         </div>
-        {open && <MobileNav base={base} setOpen={setOpen} cls="bg-[#16181d] border-t border-white/10 text-white" />}
+        {open && <MobileNav base={base} setOpen={setOpen} cls="bg-[#f7f5f2] border-t border-[#14161a]/10 text-[#14161a]" />}
       </header>
     )
 
-  // pulse — floating pill nav
+  // pulse — floating pill
   return (
     <header className="sticky top-4 z-40 px-4">
-      <div className="max-w-5xl mx-auto rounded-full border border-white/10 bg-[#0b0f14]/80 backdrop-blur-xl px-4 py-2 flex items-center gap-4 shadow-2xl shadow-black/40">
+      <div className={`max-w-5xl mx-auto rounded-full border transition-all ${scrolled ? 'border-white/15 bg-[#0a0c10]/90 shadow-2xl shadow-black/50' : 'border-white/10 bg-[#0a0c10]/70'} backdrop-blur-xl px-4 py-2 flex items-center gap-4`}>
         {Logo}
         <nav className="hidden lg:flex items-center gap-1 ml-auto">
           {NAV.map((n) => (
@@ -167,13 +185,13 @@ function Header() {
             </NavLink>
           ))}
           <Link to={`${base}/contact`} className={t.btnPrimary + ' !px-5 !py-2 text-sm ml-1'}>
-            Get a Quote
+            Get a quote
           </Link>
         </nav>
-        <MobileToggle open={open} setOpen={setOpen} dark />
+        <MobileToggle open={open} setOpen={setOpen} cls="text-white" />
       </div>
       {open && (
-        <div className="max-w-5xl mx-auto mt-2 rounded-2xl border border-white/10 bg-[#0b0f14]/95 backdrop-blur-xl overflow-hidden">
+        <div className="max-w-5xl mx-auto mt-2 rounded-2xl border border-white/10 bg-[#0a0c10]/95 backdrop-blur-xl overflow-hidden">
           <MobileNav base={base} setOpen={setOpen} cls="text-white" bare />
         </div>
       )}
@@ -181,22 +199,27 @@ function Header() {
   )
 }
 
-function MobileToggle({ open, setOpen, dark }) {
+function MobileToggle({ open, setOpen, cls }) {
   return (
-    <button
-      onClick={() => setOpen(!open)}
-      className={`lg:hidden ml-auto p-2 ${dark ? 'text-white' : 'text-[#0f2a43]'}`}
-      aria-label="Menu"
-    >
-      <Icon name={open ? 'close' : 'chat'} size={22} />
-      <span className="sr-only">Menu</span>
+    <button onClick={() => setOpen(!open)} className={`lg:hidden ml-auto p-2 ${cls}`} aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        {open ? (
+          <>
+            <path d="M6 6l12 12M18 6L6 18" />
+          </>
+        ) : (
+          <>
+            <path d="M4 7h16M4 12h16M4 17h10" />
+          </>
+        )}
+      </svg>
     </button>
   )
 }
 
 function MobileNav({ base, setOpen, cls, bare }) {
   return (
-    <nav className={`lg:hidden ${bare ? '' : cls} px-6 py-4 flex flex-col gap-3 ${bare ? cls : ''}`}>
+    <nav className={`lg:hidden ${cls} px-6 py-4 flex flex-col gap-3`}>
       {NAV.map((n) => (
         <NavLink key={n.to} to={`${base}/${n.to}`} end={n.end} onClick={() => setOpen(false)} className="py-1.5 font-semibold">
           {n.label}
@@ -209,37 +232,36 @@ function MobileNav({ base, setOpen, cls, bare }) {
 function Footer() {
   const { variantId } = useParams()
   const base = `/${variantId}`
-  const dark = variantId !== 'aegis'
   const wrap =
     variantId === 'ember'
-      ? 'bg-[#16181d] text-white border-t-4 border-[#d7263d]'
+      ? 'bg-[#14161a] text-white'
       : variantId === 'aegis'
-        ? 'bg-[#0f2a43] text-white'
-        : 'bg-[#080b0f] text-slate-300 border-t border-white/10'
+        ? 'bg-[#0c2340] text-white'
+        : 'bg-[#07090c] text-[#c9d2de] border-t border-white/8'
+  const brandFont = variantId === 'ember' ? 'font-archivo' : variantId === 'aegis' ? 'font-fraunces' : 'font-grotesk'
   return (
     <footer className={wrap}>
-      <div className="max-w-6xl mx-auto px-5 py-14 grid gap-10 md:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-5 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className={`text-2xl font-bold ${variantId === 'ember' ? 'font-condensed uppercase tracking-wide' : ''}`}>
-            Newark Fire Sprinkler Corp.
-          </p>
-          <p className={`mt-2 max-w-md text-sm ${dark ? 'text-white/60' : 'text-white/70'}`}>
+          <p className={`${brandFont} text-2xl font-bold tracking-tight`}>Newark Fire Sprinkler Corp.</p>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
             {company.tagline}. Design, installation, inspection and 24/7 emergency service
             for fire sprinkler systems across New Jersey.
           </p>
-          <div className="mt-4 flex flex-wrap gap-2 text-xs">
-            <span className="px-3 py-1 rounded-full border border-white/20">{company.permit}</span>
-            <span className="px-3 py-1 rounded-full border border-white/20">NICET Certified</span>
-            <span className="px-3 py-1 rounded-full border border-white/20">NFPA 13 & 25</span>
-            <span className="px-3 py-1 rounded-full border border-white/20">Licensed & Insured</span>
+          <div className="mt-5 flex flex-wrap gap-2 text-[11px] font-semibold">
+            {[company.permit, 'NICET Certified', 'NFPA 13 & 25', 'Licensed & Insured'].map((b) => (
+              <span key={b} className="px-3 py-1.5 rounded-full border border-white/15 text-white/70">
+                {b}
+              </span>
+            ))}
           </div>
         </div>
         <div>
-          <p className="font-bold mb-3 text-sm uppercase tracking-wider text-white/50">Explore</p>
-          <ul className="space-y-2 text-sm">
+          <p className="font-bold mb-4 text-xs uppercase tracking-[0.16em] text-white/40">Explore</p>
+          <ul className="space-y-2.5 text-sm text-white/75">
             {NAV.slice(1).map((n) => (
               <li key={n.to}>
-                <Link to={`${base}/${n.to}`} className="hover:underline">
+                <Link to={`${base}/${n.to}`} className="hover:text-white transition-colors">
                   {n.label}
                 </Link>
               </li>
@@ -247,22 +269,22 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <p className="font-bold mb-3 text-sm uppercase tracking-wider text-white/50">Contact</p>
-          <ul className="space-y-2 text-sm">
+          <p className="font-bold mb-4 text-xs uppercase tracking-[0.16em] text-white/40">Contact</p>
+          <ul className="space-y-3 text-sm text-white/75">
             <li>
-              <a href={company.phoneHref} className="font-bold hover:underline">
+              <a href={company.phoneHref} className="font-bold text-white hover:underline">
                 {company.phone}
               </a>
-              <span className="block text-xs text-white/50">24/7 emergency line</span>
+              <span className="block text-xs text-white/45 mt-0.5">24/7 emergency line</span>
             </li>
             <li>
-              <a href={`mailto:${company.email}`} className="hover:underline break-all">
+              <a href={`mailto:${company.email}`} className="hover:text-white break-all transition-colors">
                 {company.email}
               </a>
             </li>
-            <li className="text-white/70">{company.address}</li>
+            <li className="text-white/55">{company.address}</li>
             <li>
-              <a href={company.portal} target="_blank" rel="noreferrer" className="hover:underline">
+              <a href={company.portal} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
                 Customer payment portal ↗
               </a>
             </li>
@@ -270,7 +292,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-5 py-4 text-xs text-white/40 flex flex-wrap gap-2 justify-between">
+        <div className="max-w-7xl mx-auto px-5 py-5 text-xs text-white/35 flex flex-wrap gap-2 justify-between">
           <span>© 2026 Newark Fire Sprinkler Corp. All rights reserved.</span>
           <span>{company.permit} · {company.permitClass}</span>
         </div>
@@ -281,7 +303,7 @@ function Footer() {
 
 function ConceptSwitcher({ current }) {
   return (
-    <div className="fixed bottom-5 left-5 z-50 flex items-center gap-1.5 rounded-full bg-black/75 backdrop-blur px-3 py-2 text-white shadow-xl border border-white/15">
+    <div className="fixed bottom-5 left-5 z-50 flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur px-3 py-2 text-white shadow-xl border border-white/15">
       <Link to="/" className="text-[11px] font-bold uppercase tracking-wider pr-1.5 border-r border-white/20 hover:text-orange-300">
         Gallery
       </Link>
@@ -293,7 +315,7 @@ function ConceptSwitcher({ current }) {
             v === current ? 'bg-white text-black' : 'hover:bg-white/20'
           }`}
         >
-          {v[0].toUpperCase()}
+          {v === 'ember' ? 'A' : v === 'aegis' ? 'B' : 'C'}
         </Link>
       ))}
     </div>
