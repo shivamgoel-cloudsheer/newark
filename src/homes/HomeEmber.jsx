@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { company, caseStudies, services, images } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
-import { Section, SectionHeading, StatBand, Testimonial, CTABand, GameTeaser, CaseStudyCard, Marquee, ProcessTimeline, FAQ } from '../components/Blocks.jsx'
+import { Section, SectionHeading, StatBand, Testimonial, CTABand, GameTeaser, CaseStudyCard, Marquee, ProcessTimeline, FAQ, Partners } from '../components/Blocks.jsx'
 import { useTheme } from '../theme.jsx'
 
 // A · FORGE — editorial industrial: warm paper, deep ink, precision red
@@ -41,8 +41,8 @@ export default function HomeEmber() {
             </div>
             <div className="animate-rise mt-10 flex items-center gap-8" style={{ animationDelay: '330ms' }}>
               {[
-                ['218k', 'sq ft flagship install'],
-                ['2,638', 'heads · one tower'],
+                ['2.9M+', 'sq ft protected'],
+                ['12,694', 'heads · one project'],
                 ['<5 days', 'NJ report filing'],
               ].map(([v, l]) => (
                 <div key={l}>
@@ -127,6 +127,9 @@ export default function HomeEmber() {
       <Section alt className="py-20">
         <div className="max-w-6xl mx-auto px-5">
           <StatBand light />
+          <div className="mt-16 pt-12 border-t border-white/10">
+            <Partners light />
+          </div>
         </div>
       </Section>
 

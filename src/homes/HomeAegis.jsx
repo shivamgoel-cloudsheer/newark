@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { company, caseStudies, services, images, stats } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
-import { Section, Testimonial, CTABand, GameTeaser, CaseStudyCard, ProcessTimeline, FAQ } from '../components/Blocks.jsx'
+import { Section, Testimonial, CTABand, GameTeaser, CaseStudyCard, ProcessTimeline, FAQ, Partners } from '../components/Blocks.jsx'
 import { useCountUp } from '../components/hooks.js'
 import { useTheme } from '../theme.jsx'
 
@@ -132,10 +132,15 @@ export default function HomeAegis() {
 
       {/* ── GIANT STATS ── */}
       <Section alt className="py-24 border-y border-white/10">
-        <div className="max-w-7xl mx-auto px-5 grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
-          {stats.map((s, i) => (
-            <GiantStat key={s.label} value={s.value} label={s.label} delay={i * 80} />
-          ))}
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
+            {stats.map((s, i) => (
+              <GiantStat key={s.label} value={s.value} label={s.label} delay={i * 80} />
+            ))}
+          </div>
+          <div className="mt-20 pt-12 border-t border-white/10">
+            <Partners light />
+          </div>
         </div>
       </Section>
 
@@ -212,7 +217,7 @@ export default function HomeAegis() {
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {caseStudies.slice(1).map((cs, i) => (
+            {caseStudies.slice(1, 4).map((cs, i) => (
               <CaseStudyCard key={cs.slug} cs={cs} delay={i * 90} />
             ))}
           </div>

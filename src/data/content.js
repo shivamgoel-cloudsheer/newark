@@ -66,13 +66,20 @@ export const trustBadges = [
   { label: 'Fully Insured', detail: 'Licensed, bonded & insured' },
 ]
 
-// Homepage-verified numbers: featured project stats + portfolio size
+// Numbers verified on the site; 2.9M+ / 41,000+ are sums of the eight
+// showcase projects published on newarkfiresprinkler.com/videos
 export const stats = [
   { value: '30', label: 'Years of fire protection leadership' },
-  { value: '40+', label: 'Projects across NJ & NY' },
-  { value: '2,638', label: 'Sprinklers in one flagship install' },
+  { value: '2.9M+', label: 'Sq ft protected in showcase projects' },
+  { value: '41,000+', label: 'Sprinkler heads installed' },
   { value: '24/7', label: 'Peace of mind' },
 ]
+
+// "Companies Who Trust In Us" — partner logos on the homepage
+export const partners = ['Armstrong', 'American Fire Supply', 'Reliable', 'Victaulic', 'Viking', 'Windustrial']
+
+export const codesStatement =
+  'At Newark Fire Sprinkler Corp., we are committed to ensuring that all fire protection systems comply with the latest local, state, and national codes and standards.'
 
 export const services = [
   {
@@ -104,88 +111,141 @@ export const services = [
   {
     slug: 'inspections',
     icon: 'clipboard',
-    title: 'Fire Sprinkler Inspections',
-    tagline: 'Stay compliant and prepared',
-    desc: 'Stay compliant and prepared with professional fire sprinkler inspections from Newark Fire Sprinkler Corp. Our licensed and certified team conducts thorough inspections to verify code compliance and component functionality — with documentation that meets all compliance requirements.',
+    title: 'Fire Sprinkler Inspections & Compliance',
+    tagline: 'Stay compliant and safe with expert inspections',
+    desc: 'Regular inspections are critical to ensuring your fire sprinkler system operates as intended in an emergency. Our licensed and certified team conducts residential and commercial inspections, code compliance checks and hydrant & pump testing — with comprehensive reports and actionable recommendations.',
     features: [
-      'Quarterly, annual & 5-year NFPA 25 inspections',
-      'Code compliance & component verification',
-      'Compliance testing & documentation',
-      'Reports filed with your local fire official',
+      'Residential & commercial inspections',
+      'Code compliance checks — local & national regulations',
+      'Hydrant and pump testing',
+      'Comprehensive reports with actionable recommendations',
     ],
   },
   {
     slug: 'design',
     icon: 'blueprint',
     title: 'Custom Design & Shop Drawings',
-    tagline: 'An in-house design team, not a subcontractor',
-    desc: 'Every property is unique, which is why we offer custom fire sprinkler designs and shop drawings tailored to your specific needs. Our in-house design team creates efficient systems that meet local and national regulations — from hydraulic calculations to permit-ready submittals.',
+    tagline: 'Tailored fire protection systems built for your property',
+    desc: 'Every property is unique, which is why we offer custom fire sprinkler designs and shop drawings tailored to your specific needs. Benefit from expertly crafted sprinkler layouts designed for maximum safety and efficiency — detailed, code-compliant drawings that streamline installation and reduce costs.',
     features: [
-      'Custom fire sprinkler designs',
-      'Coordinated shop drawings',
-      'Hydraulic calculations',
-      'Local & national code compliance',
+      'In-house fire system design',
+      'Custom code-compliant shop drawings',
+      'NFPA & local fire safety compliance',
+      'Cost optimization — designs that minimize waste, maximize coverage',
     ],
   },
 ]
 
-// Real projects from newarkfiresprinkler.com/work
+// The eight showcase projects published on newarkfiresprinkler.com/videos —
+// every number is theirs, verbatim.
 export const caseStudies = [
   {
-    slug: 'singh-tower',
+    slug: '301-west-side',
     sector: 'Multi-Unit Residential',
     title: '301 West Side Avenue, Jersey City',
     summary:
-      'The flagship: a 218,028 sq ft multi-unit residential tower protected by 2,638 sprinklers — designed, installed and commissioned by our team.',
+      'The homepage flagship: a 218,028 sq ft multi-unit residential building where 2,638 sprinkler heads ensure safety for every one of its 202 units.',
     metrics: [
       { value: '218,028', label: 'sq. feet' },
-      { value: '2,638', label: 'sprinklers' },
-      { value: 'Multi-unit', label: 'residential' },
+      { value: '202', label: 'units' },
+      { value: '2,638', label: 'sprinkler heads' },
     ],
-    body: 'Featured on our portfolio as the definitive proof of scale: full system design by our in-house team, coordinated shop drawings, and installation across every residential floor and amenity space.',
+    body: 'Full system design by our in-house team, coordinated shop drawings, and installation across every residential floor and amenity space — the project we put on our homepage.',
     accent: '#e2543a',
   },
   {
-    slug: 'urby-harrison',
-    sector: 'Residential',
-    title: 'URBY4, Harrison, NJ',
+    slug: 'avalon-wayne',
+    sector: 'Multi-Unit Residential',
+    title: 'Avalon Wayne — 1445 Valley Road, Wayne, NJ',
     summary:
-      'Full sprinkler coverage for the URBY4 development in Harrison — one of 29 residential projects delivered by our Residential & Commercial division across NJ and NY.',
+      'Our largest showcase: 767,073 sq ft and 473 residences protected by 12,694 sprinkler heads.',
     metrics: [
-      { value: 'Harrison', label: 'New Jersey' },
-      { value: 'Residential', label: 'division' },
-      { value: '29', label: 'residential projects' },
+      { value: '767,073', label: 'sq. feet' },
+      { value: '473', label: 'units' },
+      { value: '12,694', label: 'sprinkler heads' },
     ],
-    body: 'Our residential portfolio spans from Tarrytown, NY to Burlington, NJ — including 5 Port Imperial Blvd in Weehawken, 155 Washington Street in Newark, Aberdeen Senior Apartments in Jersey City and the River Club in Bogota.',
+    body: 'At three-quarters of a million square feet, Avalon Wayne is proof the team scales — design, coordination and installation across an entire garden-community campus.',
     accent: '#2b6cb0',
   },
   {
-    slug: 'port-carteret',
-    sector: 'Industrial',
-    title: '580 Port Carteret Drive, Carteret, NJ',
+    slug: 'port-liberte',
+    sector: 'Multi-Unit Residential',
+    title: 'Port Liberte, Jersey City, NJ',
     summary:
-      'Industrial fire suppression for port-area logistics — alongside projects in Secaucus, Edison, Mansfield Township and Montgomery, NY.',
+      '673,835 sq ft, 401 units and 11,368 heads — across seven parking levels and five residential floors.',
     metrics: [
-      { value: 'Carteret', label: 'New Jersey' },
-      { value: 'Industrial', label: 'division' },
-      { value: '5', label: 'industrial sites' },
+      { value: '673,835', label: 'sq. feet' },
+      { value: '401', label: 'units' },
+      { value: '11,368', label: 'sprinkler heads' },
     ],
-    body: 'Our Industrial division handles high-risk environments: 25 Enterprise Ave N in Secaucus, 2900 Woodbridge Ave in Edison, 3275 Route 206 in Mansfield Township and 134 Neelytown Rd in Montgomery, NY.',
+    body: 'Seven parking levels topped by five residential floors: mixed hydraulic demands, one coordinated system.',
+    accent: '#6b46c1',
+  },
+  {
+    slug: 'bjs-wholesale',
+    sector: 'Commercial',
+    title: "BJ's Wholesale Facility",
+    summary:
+      'A 95,022 sq ft commercial facility protected by 1,301 heads, a 1,250 GPM fire pump and three 8" ESFR risers — installed in just 4 weeks.',
+    metrics: [
+      { value: '95,022', label: 'sq. feet' },
+      { value: '1,301', label: 'sprinkler heads' },
+      { value: '4 weeks', label: 'installation' },
+    ],
+    body: 'High-piled retail storage demands ESFR protection: 1,250 GPM fire pump, three 8-inch ESFR risers, and an installation schedule that kept the business moving — completed in four weeks.',
     accent: '#b7791f',
   },
   {
-    slug: 'grove-street',
-    sector: 'Mixed-Use',
-    title: '101 Grove Street, Jersey City',
-    summary:
-      'Mixed-use protection in the heart of Jersey City — with sister projects at 2-16 Spring Street, Newark and Meridia Transit Plaza, Dover.',
+    slug: 'the-morrison',
+    sector: 'Multi-Unit Residential',
+    title: 'The Morrison, Parsippany, NJ',
+    summary: '460,300 sq ft and 296 residences protected by 5,220 sprinkler heads.',
     metrics: [
-      { value: 'Jersey City', label: 'New Jersey' },
-      { value: 'Mixed-use', label: 'sector' },
-      { value: '3', label: 'mixed-use projects' },
+      { value: '460,300', label: 'sq. feet' },
+      { value: '296', label: 'units' },
+      { value: '5,220', label: 'sprinkler heads' },
     ],
-    body: 'Multi-occupancy buildings demand zoned systems engineered for every use group under one roof — retail at street level, residences above, one compliant system throughout.',
-    accent: '#6b46c1',
+    body: 'Large-plate suburban residential — full design-to-commissioning delivery by our in-house team.',
+    accent: '#0f766e',
+  },
+  {
+    slug: 'the-declan',
+    sector: 'Multi-Unit Residential',
+    title: 'The Declan Apartments, Weehawken, NJ',
+    summary: '351,390 sq ft, 298 units, 3,641 sprinkler heads on the Weehawken waterfront.',
+    metrics: [
+      { value: '351,390', label: 'sq. feet' },
+      { value: '298', label: 'units' },
+      { value: '3,641', label: 'sprinkler heads' },
+    ],
+    body: 'One of several Weehawken projects in our portfolio, alongside 600 and 800 Harbor Boulevard and 5 Port Imperial Blvd.',
+    accent: '#9d174d',
+  },
+  {
+    slug: 'singh-tower',
+    sector: 'Multi-Unit Residential',
+    title: 'Singh Tower — 622 Summit Ave, Jersey City',
+    summary: 'A 29-story tower: 230,600 sq ft, 209 units, 2,855 sprinkler heads.',
+    metrics: [
+      { value: '29', label: 'stories' },
+      { value: '209', label: 'units' },
+      { value: '2,855', label: 'sprinkler heads' },
+    ],
+    body: 'High-rise work is where coordination matters most — 29 stories of risers, floor control valves and heads, delivered to schedule.',
+    accent: '#b45309',
+  },
+  {
+    slug: 'aquaview',
+    sector: 'Multi-Unit Residential',
+    title: 'Aquaview at Harbor Station South, Bayonne, NJ',
+    summary: '169,360 sq ft and 159 units protected by 2,050 sprinkler heads.',
+    metrics: [
+      { value: '169,360', label: 'sq. feet' },
+      { value: '159', label: 'units' },
+      { value: '2,050', label: 'sprinkler heads' },
+    ],
+    body: 'Waterfront residential in Bayonne — designed, installed and certified by one accountable team.',
+    accent: '#155e75',
   },
 ]
 
@@ -356,27 +416,27 @@ export const values = [
   },
 ]
 
-// Full real roster from newarkfiresprinkler.com/about
+// Current roster from newarkfiresprinkler.com/contact (with direct emails);
+// Skender Perolli appears on /about. Two source emails had domain typos
+// (firespinkler / sprinklerr) — normalized to the correct domain.
 export const team = [
-  { name: 'Luis Ferreira', role: 'President', dept: 'Administration' },
+  { name: 'Luis Ferreira', role: 'President', dept: 'Administration', email: 'LuisF@newarkfiresprinkler.com' },
   { name: 'Skender Perolli', role: 'Managing Director', dept: 'Administration' },
-  { name: 'Stacy Sanchez', role: 'Bid Coordinator', dept: 'Administration' },
-  { name: 'Ruben Rodrigues', role: 'Office Manager', dept: 'Administration' },
-  { name: 'Keith Dolan', role: 'Business Development', dept: 'Administration' },
-  { name: 'Bryan Jaramillo', role: 'Residential Manager', dept: 'Residential & Commercial' },
-  { name: 'Jordan Feliz', role: 'Estimator', dept: 'Residential & Commercial' },
-  { name: 'Yandri Torres', role: 'Estimator', dept: 'Residential & Commercial' },
-  { name: 'Armando Gonzalez', role: 'Industrial Manager', dept: 'Industrial' },
-  { name: 'Anthony Paltan', role: 'Industrial Designer', dept: 'Industrial' },
-  { name: 'Kevin Romero', role: 'Estimator & Industrial Designer', dept: 'Industrial' },
-  { name: 'Alex Mirenda', role: 'Service & Inspections Manager', dept: 'Service & Inspections' },
-  { name: 'Matthew Roman', role: 'Service Coordinator', dept: 'Service & Inspections' },
-  { name: 'Tom Tornatore', role: 'Sales Representative', dept: 'Service & Inspections' },
-  { name: 'Philip Monesmith', role: 'Sales Representative', dept: 'Service & Inspections' },
-  { name: 'Jesenia Serrano', role: 'Coordinator', dept: 'Service & Inspections' },
-  { name: 'Aimme Balbuena', role: 'Coordinator', dept: 'Service & Inspections' },
-  { name: 'Damas Paul', role: 'Manager / Quality Control', dept: 'Design' },
-  { name: 'Pedro Bencosme', role: 'Assistant Manager', dept: 'Design' },
+  { name: 'Jose Polanco', role: 'Controller', dept: 'Administration', email: 'Jpolanco@newarkfiresprinkler.com' },
+  { name: 'Stacy Sanchez', role: 'Contract & Insurance Compliance Officer', dept: 'Administration', email: 'Stacys@newarkfiresprinkler.com' },
+  { name: 'Ruben Rodrigues', role: 'Office Manager', dept: 'Administration', email: 'Office1@newarkfiresprinkler.com' },
+  { name: 'Keith Dolan', role: 'Operations Manager', dept: 'Administration', email: 'Keithd@newarkfiresprinkler.com' },
+  { name: 'Bryan Jaramillo', role: 'Residential Manager', dept: 'Residential & Commercial', email: 'Bryanj@newarkfiresprinkler.com' },
+  { name: 'Denilson Martinez', role: 'Estimator', dept: 'Residential & Commercial', email: 'Denilsonm@newarkfiresprinkler.com' },
+  { name: 'Yandri Torres', role: 'Estimator', dept: 'Residential & Commercial', email: 'Yandrit@newarkfiresprinkler.com' },
+  { name: 'Armando Gonzalez', role: 'Industrial Manager', dept: 'Industrial', email: 'Armandog@newarkfiresprinkler.com' },
+  { name: 'Anthony Paltan', role: 'Industrial Designer', dept: 'Industrial', email: 'Anthonyp@newarkfiresprinkler.com' },
+  { name: 'Bryan Remache', role: 'Estimator & Industrial Designer', dept: 'Industrial', email: 'Bremache@newarkfiresprinkler.com' },
+  { name: 'Alex Mirenda', role: 'Service & Inspections Manager', dept: 'Service & Inspections', email: 'AlexM@newarkfiresprinkler.com' },
+  { name: 'Sharon Sweigart', role: 'Service Coordinator', dept: 'Service & Inspections', email: 'Sharons@newarkfiresprinkler.com' },
+  { name: 'Sheila Balbuena', role: 'Service Bids Coordinator', dept: 'Service & Inspections', email: 'Servicebids@newarkfiresprinkler.com' },
+  { name: 'Eduor De Jesus', role: 'Manager / Quality Control', dept: 'Design', email: 'Eduorj@newarkfiresprinkler.com' },
+  { name: 'Pedro Bencosme', role: 'Assistant Manager', dept: 'Design', email: 'Pedrob@newarkfiresprinkler.com' },
 ]
 
 export const testimonial = {
@@ -386,12 +446,27 @@ export const testimonial = {
   source: 'Verified customer review',
 }
 
-// Segment copy from newarkfiresprinkler.com/services/installation
+// Verbatim positioning from the /industries pages
 export const industries = [
-  { name: 'Residential', desc: 'Protect your family and home with expertly designed systems that activate instantly to stop fire spread.' },
-  { name: 'Commercial', desc: 'Safeguard your business and employees with customized sprinkler solutions for offices, retail spaces, and restaurants.' },
-  { name: 'Industrial', desc: 'Ensure safety in high-risk areas like factories and warehouses with advanced fire suppression technology.' },
-  { name: 'Mixed-Use', desc: 'Multi-occupancy buildings — zoned systems engineered for every use group under one roof.' },
+  {
+    name: 'Residential',
+    desc: 'Protect your family and home with expertly designed systems that activate instantly to stop fire spread.',
+  },
+  {
+    name: 'Commercial',
+    headline: 'Tailored for business safety and success',
+    desc: 'Fire protection that prioritizes safety, minimizes risks and ensures operational continuity — for retail, offices, restaurants and hospitality.',
+  },
+  {
+    name: 'Industrial',
+    headline: 'Built for complexity and safety',
+    desc: 'Systems that handle large-scale operations, high-risk environments and complex layouts — manufacturing, warehouses, chemical facilities and logistics hubs.',
+  },
+  {
+    name: 'Mixed-Use',
+    headline: 'Integrated safety for diverse spaces',
+    desc: 'Seamless integration across residential, commercial and shared spaces — full coverage without compromising design or functionality.',
+  },
 ]
 
 export const variants = [

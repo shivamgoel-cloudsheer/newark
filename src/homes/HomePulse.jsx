@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { company, caseStudies, services } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
-import { Section, SectionHeading, StatBand, Testimonial, CTABand, GameTeaser, CaseStudyCard, Marquee, FAQ } from '../components/Blocks.jsx'
+import { Section, SectionHeading, StatBand, Testimonial, CTABand, GameTeaser, CaseStudyCard, Marquee, FAQ, Partners } from '../components/Blocks.jsx'
 import { useTheme } from '../theme.jsx'
 import { spotlightMove } from '../components/hooks.js'
 
@@ -144,6 +144,9 @@ export default function HomePulse() {
       <Section alt className="py-20 border-y border-white/8">
         <div className="max-w-6xl mx-auto px-5">
           <StatBand light />
+          <div className="mt-16 pt-12 border-t border-white/8">
+            <Partners light />
+          </div>
         </div>
       </Section>
 

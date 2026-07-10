@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useTheme } from '../theme.jsx'
-import { company } from '../data/content.js'
+import { company, team } from '../data/content.js'
 import { Icon } from '../components/Icons.jsx'
 import { PageHero } from './Services.jsx'
+
+const contactDepts = ['Residential & Commercial', 'Industrial', 'Service & Inspections', 'Design', 'Administration']
 
 export default function Contact() {
   const t = useTheme()
@@ -126,6 +128,32 @@ export default function Contact() {
               </p>
             </form>
           )}
+        </div>
+      </section>
+
+      {/* direct department contacts — from newarkfiresprinkler.com/contact */}
+      <section className="max-w-6xl mx-auto px-5 pb-20">
+        <h2 className={`${t.display} text-2xl md:text-3xl mb-2`}>Reach the right desk directly</h2>
+        <p className={`text-sm mb-8 ${t.muted}`}>Skip the switchboard — every department has a direct line.</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {contactDepts.map((dept) => (
+            <div key={dept} className={`${t.card} p-6`}>
+              <p className={`${t.eyebrow} mb-4`}>{dept}</p>
+              <ul className="space-y-3">
+                {team
+                  .filter((m) => m.dept === dept && m.email)
+                  .map((m) => (
+                    <li key={m.name}>
+                      <p className="font-bold text-sm leading-tight">{m.name}</p>
+                      <p className={`text-[11px] ${t.muted}`}>{m.role}</p>
+                      <a href={`mailto:${m.email}`} className={`text-xs font-semibold ${t.accentText} hover:underline break-all`}>
+                        {m.email}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
     </>

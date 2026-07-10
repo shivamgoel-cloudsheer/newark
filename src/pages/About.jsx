@@ -95,6 +95,11 @@ export default function About() {
                         </span>
                         <p className="font-bold mt-3.5 leading-tight">{m.name}</p>
                         <p className={`text-xs mt-1 ${t.muted}`}>{m.role}</p>
+                        {m.email && (
+                          <a href={`mailto:${m.email}`} className={`block text-[11px] mt-2 font-semibold ${t.accentText} hover:underline break-all`}>
+                            {m.email}
+                          </a>
+                        )}
                       </div>
                     ))}
                 </div>

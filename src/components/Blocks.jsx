@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useTheme } from '../theme.jsx'
-import { services, caseStudies, stats, trustBadges, testimonial, company, marqueeItems, process, faqs, images } from '../data/content.js'
+import { services, caseStudies, stats, trustBadges, testimonial, company, marqueeItems, process, faqs, images, partners } from '../data/content.js'
 import { Icon } from './Icons.jsx'
 import { useRevealAll, useCountUp } from './hooks.js'
 import FireGame from './FireGame.jsx'
@@ -133,12 +133,38 @@ export function ServiceCards() {
 }
 
 const csImages = {
-  'singh-tower': images.buildingGlass,
-  'urby-harrison': images.buildingWhite,
-  'port-carteret': images.warehouse,
-  'grove-street': images.heroCorporate,
+  '301-west-side': images.buildingGlass,
+  'avalon-wayne': images.buildingWhite,
+  'port-liberte': images.skyline,
+  'bjs-wholesale': images.warehouse,
+  'the-morrison': images.heroCorporate,
+  'the-declan': images.construction,
+  'singh-tower': images.cityDark,
+  'aquaview': images.interior,
 }
 export const caseStudyImage = (slug) => csImages[slug] || images.buildingGlass
+
+// "Companies Who Trust In Us" — wordmark strip
+export function Partners({ light = false }) {
+  const t = useTheme()
+  return (
+    <div className="reveal">
+      <p className={`text-center text-[11px] font-bold uppercase tracking-[0.24em] mb-7 ${light ? 'text-white/40' : t.muted}`}>
+        Companies who trust in us
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-5">
+        {partners.map((p) => (
+          <span
+            key={p}
+            className={`${t.display} text-xl md:text-2xl select-none ${light ? 'text-white/35 hover:text-white/70' : 'opacity-30 hover:opacity-70'} transition-all`}
+          >
+            {p}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function CaseStudyCard({ cs, delay = 0 }) {
   const t = useTheme()
